@@ -14,7 +14,7 @@ namespace SafeAndClean.Extensions
         {
             services.AddOpenApiDocument(document =>
             {
-                document.Title = "Safe and Clean";
+                document.Title = "Finding Mentor";
                 document.Version = "1.0";
                 document.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {

@@ -16,6 +16,10 @@ namespace Data.DbContext
         #region Entities
        
         public virtual DbSet<Course> Courses { get; set; }
+
+        public virtual DbSet<Student> Students { get; set; }
+
+        public virtual DbSet<Mentor> Mentors { get; set; }
         public virtual DbSet<Major> Majors { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Resource> Resources { get; set; }
@@ -34,6 +38,7 @@ namespace Data.DbContext
             #region double pk fk
           
             modelBuilder.Entity<SubjectMajor>().HasKey(s => new { s.MajorId, s.SubjectId });
+           
             #endregion
 
             #region seed data
