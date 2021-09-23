@@ -4,14 +4,16 @@ using Data.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210923041404_FM01")]
+    partial class FM01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +51,8 @@ namespace Data.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("SubjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -58,13 +60,14 @@ namespace Data.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Course");
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("Data.Entities.Major", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -83,29 +86,29 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Major");
+                    b.ToTable("Majors");
                 });
 
             modelBuilder.Entity("Data.Entities.Mentor", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("MajorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("MajorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("MajorId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Mentor");
                 });
@@ -143,7 +146,7 @@ namespace Data.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Question");
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Data.Entities.Resource", b =>
@@ -183,7 +186,7 @@ namespace Data.Migrations
 
                     b.HasIndex("SubjectMentorId");
 
-                    b.ToTable("Resource");
+                    b.ToTable("Resources");
                 });
 
             modelBuilder.Entity("Data.Entities.Section", b =>
@@ -214,7 +217,7 @@ namespace Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Section");
+                    b.ToTable("Sections");
                 });
 
             modelBuilder.Entity("Data.Entities.Student", b =>
@@ -263,13 +266,14 @@ namespace Data.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentRegistration");
+                    b.ToTable("StudentRegistrations");
                 });
 
             modelBuilder.Entity("Data.Entities.Subject", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -288,22 +292,22 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subject");
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Data.Entities.SubjectMajor", b =>
                 {
-                    b.Property<string>("MajorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("MajorId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("SubjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("MajorId", "SubjectId");
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("SubjectMajor");
+                    b.ToTable("SubjectMajors");
                 });
 
             modelBuilder.Entity("Data.Entities.SubjectMentor", b =>
@@ -318,8 +322,8 @@ namespace Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("SubjectId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -327,7 +331,7 @@ namespace Data.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("SubjectMentor");
+                    b.ToTable("SubjectMentors");
                 });
 
             modelBuilder.Entity("Data.Entities.Transaction", b =>
@@ -361,7 +365,7 @@ namespace Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Data.Entities.User", b =>
@@ -407,8 +411,8 @@ namespace Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("MajorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("MajorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
@@ -593,7 +597,9 @@ namespace Data.Migrations
 
                     b.HasOne("Data.Entities.Subject", "Subject")
                         .WithMany()
-                        .HasForeignKey("SubjectId");
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data.Entities.Mentor", b =>
@@ -604,7 +610,7 @@ namespace Data.Migrations
 
                     b.HasOne("Data.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Data.Entities.Question", b =>
@@ -685,7 +691,9 @@ namespace Data.Migrations
 
                     b.HasOne("Data.Entities.Subject", "Subject")
                         .WithMany()
-                        .HasForeignKey("SubjectId");
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data.Entities.Transaction", b =>

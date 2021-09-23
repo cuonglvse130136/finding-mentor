@@ -5,19 +5,25 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("Course")]
     public class Course : BaseEntity
     {
         public string Name { get; set; }
 
-        public Guid SubjectId { get; set; }
+        public string SubjectId { get; set; }
         [ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; }
 
         public DateTime StartDate { get; set; }
         public double Price { get; set; }
 
-        public string MentorId { get; set; }
+        public Guid MentorId { get; set; }
         [ForeignKey("MentorId")]
-        public virtual User Mentor { get; set; }
+        public virtual Mentor Mentor { get; set; }
+
+
+        public virtual ICollection<StudentRegistration> StudentRegistrations { get; set; }
+
+        public virtual ICollection<Section> Sections { get; set; }
     }
 }

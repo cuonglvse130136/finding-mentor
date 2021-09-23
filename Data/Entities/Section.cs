@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("Section")]
     public class Section : BaseEntity
     {
         public string Title { get; set; }

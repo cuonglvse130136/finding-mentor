@@ -6,13 +6,14 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("SubjectMajor")]
     public class SubjectMajor
     {
-        public Guid SubjectId { get; set; }
+        public string SubjectId { get; set; }
         [Key, ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; }
 
-        public Guid MajorId { get; set; }
+        public string MajorId { get; set; }
         [Key, ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
     }

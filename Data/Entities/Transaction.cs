@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("Transaction")]
     public class Transaction: BaseEntity
     {
         public double Deposit { get; set; }

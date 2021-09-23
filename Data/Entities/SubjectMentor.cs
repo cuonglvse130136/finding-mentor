@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("SubjectMentor")]
     public class SubjectMentor
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,10 +16,12 @@ namespace Data.Entities
         [ForeignKey("MentorId")]
         public virtual User Mentor { get; set; }
 
-        public Guid SubjectId { get; set; }
+        public string SubjectId { get; set; }
         [ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; }
 
         public string Name { get; set; }
+
+        public virtual ICollection<Resource> Resources { get; set; }
     }
 }

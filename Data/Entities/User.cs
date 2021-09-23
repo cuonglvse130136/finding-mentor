@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("User")]
     public class User : IdentityUser
     {
         public string FirstName { get; set; }
@@ -17,9 +18,11 @@ namespace Data.Entities
 
         public double Balance { get; set; }
 
-        public Guid? MajorId { get; set; }
+        public string? MajorId { get; set; }
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
+
+      
 
         public static ClaimsIdentity Identity { get; internal set; }
 

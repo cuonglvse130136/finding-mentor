@@ -5,13 +5,14 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("Question")]
     public class Question : BaseEntity
     {
         public string Content { get; set; }
 
-        public string StudentId { get; set; }
+        public Guid StudentId { get; set; }
         [ForeignKey("StudentId")]
-        public virtual User Student { get; set; }
+        public virtual Student Student { get; set; }
 
         public Guid SectionId { get; set; }
         [ForeignKey("SectionId")]

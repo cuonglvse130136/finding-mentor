@@ -6,11 +6,12 @@ using System.Text;
 
 namespace Data.Entities
 {
+    [Table("StudentRegistration")]
     public class StudentRegistration : BaseEntity
     {
-        public string StudentId { get; set; }
+        public Guid StudentId { get; set; }
         [ForeignKey("StudentId")]
-        public virtual User Student { get; set; }
+        public virtual Student Student { get; set; }
 
         public Guid CourseId { get; set; }
         [ForeignKey("CourseId")]

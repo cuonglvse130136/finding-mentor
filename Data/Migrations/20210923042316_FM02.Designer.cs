@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210915105534_Findmentor")]
-    partial class Findmentor
+    [Migration("20210923042316_FM02")]
+    partial class FM02
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,21 +20,6 @@ namespace Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Data.Entities.AvailableMajor", b =>
-                {
-                    b.Property<Guid>("MajorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("MentorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("MajorId", "MentorId");
-
-                    b.HasIndex("MentorId");
-
-                    b.ToTable("AvailableMajors");
-                });
 
             modelBuilder.Entity("Data.Entities.Course", b =>
                 {
@@ -54,8 +39,8 @@ namespace Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("MentorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("MentorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -104,6 +89,30 @@ namespace Data.Migrations
                     b.ToTable("Majors");
                 });
 
+            modelBuilder.Entity("Data.Entities.Mentor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("MajorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MajorId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Mentor");
+                });
+
             modelBuilder.Entity("Data.Entities.Question", b =>
                 {
                     b.Property<Guid>("Id")
@@ -128,8 +137,8 @@ namespace Data.Migrations
                     b.Property<Guid>("SectionId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -211,6 +220,22 @@ namespace Data.Migrations
                     b.ToTable("Sections");
                 });
 
+            modelBuilder.Entity("Data.Entities.Student", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Student");
+                });
+
             modelBuilder.Entity("Data.Entities.StudentRegistration", b =>
                 {
                     b.Property<Guid>("Id")
@@ -232,8 +257,8 @@ namespace Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("StudentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -562,32 +587,30 @@ namespace Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Data.Entities.AvailableMajor", b =>
+            modelBuilder.Entity("Data.Entities.Course", b =>
                 {
-                    b.HasOne("Data.Entities.Major", "Major")
-                        .WithMany()
-                        .HasForeignKey("MajorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Data.Entities.User", "Mentor")
-                        .WithMany()
+                    b.HasOne("Data.Entities.Mentor", "Mentor")
+                        .WithMany("Courses")
                         .HasForeignKey("MentorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Data.Entities.Course", b =>
-                {
-                    b.HasOne("Data.Entities.User", "Mentor")
-                        .WithMany()
-                        .HasForeignKey("MentorId");
 
                     b.HasOne("Data.Entities.Subject", "Subject")
                         .WithMany()
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Data.Entities.Mentor", b =>
+                {
+                    b.HasOne("Data.Entities.Major", "Major")
+                        .WithMany("Mentors")
+                        .HasForeignKey("MajorId");
+
+                    b.HasOne("Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Data.Entities.Question", b =>
@@ -598,15 +621,17 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.User", "Student")
+                    b.HasOne("Data.Entities.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data.Entities.Resource", b =>
                 {
                     b.HasOne("Data.Entities.SubjectMentor", "SubjectMentor")
-                        .WithMany()
+                        .WithMany("Resources")
                         .HasForeignKey("SubjectMentorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -615,35 +640,44 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Entities.Section", b =>
                 {
                     b.HasOne("Data.Entities.Course", "Course")
-                        .WithMany()
+                        .WithMany("Sections")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Data.Entities.Student", b =>
+                {
+                    b.HasOne("Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Data.Entities.StudentRegistration", b =>
                 {
                     b.HasOne("Data.Entities.Course", "Course")
-                        .WithMany()
+                        .WithMany("StudentRegistrations")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Entities.User", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId");
+                    b.HasOne("Data.Entities.Student", "Student")
+                        .WithMany("StudentRegistrations")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data.Entities.SubjectMajor", b =>
                 {
                     b.HasOne("Data.Entities.Major", "Major")
-                        .WithMany()
+                        .WithMany("SubjectMajors")
                         .HasForeignKey("MajorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Data.Entities.Subject", "Subject")
-                        .WithMany()
+                        .WithMany("SubjectMajors")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -672,7 +706,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Entities.User", b =>
                 {
                     b.HasOne("Data.Entities.Major", "Major")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("MajorId");
                 });
 

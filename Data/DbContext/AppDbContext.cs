@@ -14,7 +14,7 @@ namespace Data.DbContext
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         #region Entities
-        public virtual DbSet<AvailableMajor> AvailableMajors { get; set; }
+       
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Major> Majors { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
@@ -32,7 +32,7 @@ namespace Data.DbContext
             base.OnModelCreating(modelBuilder);
 
             #region double pk fk
-            modelBuilder.Entity<AvailableMajor>().HasKey(s => new { s.MajorId, s.MentorId });
+          
             modelBuilder.Entity<SubjectMajor>().HasKey(s => new { s.MajorId, s.SubjectId });
             #endregion
 
