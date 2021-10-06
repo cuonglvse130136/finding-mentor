@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Data.FMDbContext;
+using Data.DbContext;
 using Data.Entities;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -21,8 +21,8 @@ namespace Services.Core
 {
     public interface IAccountService
     {
-        public Task<ResultModel> Login(LoginModel model);
-        public Task<ResultModel> Register(UserRegisterModel model, string role);
+        public Task<ResultModel> Login(UserAuthModel model);
+        public Task<ResultModel> Register(UserAuthModel model, string role);
     }
 
     public class AccountService : IAccountService
@@ -41,14 +41,18 @@ namespace Services.Core
             _appDbContext = appDbContext;
             _configuration = configuration;
 
-            FirebaseConfig fbconfig = new FirebaseConfig();
-            _configuration.Bind("Firebase", fbconfig);
-          
-            var json = JsonConvert.SerializeObject(fbconfig);
-            FirebaseApp.Create(new AppOptions()
+
+            if (FirebaseApp.DefaultInstance == null)
             {
-                Credential = GoogleCredential.FromJson(json)
-            });
+                var fbconfig = new FirebaseConfig();
+                _configuration.Bind("Firebase", fbconfig);
+
+                var json = JsonConvert.SerializeObject(fbconfig);
+                FirebaseApp.Create(new AppOptions()
+                {
+                    Credential = GoogleCredential.FromJson(json)
+                });
+            }
 
         }
 
@@ -77,17 +81,24 @@ namespace Services.Core
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public async Task<ResultModel> Login(LoginModel model)
+        public async Task<ResultModel> Login(UserAuthModel model)
         {
             var result = new ResultModel();
-            /*try
+            try
             {
-                var signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
-                if (signInResult.Succeeded)
+                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(model.IdToken);
+                string uid = decodedToken.Uid;
+
+
+                var isExistUsername = _appDbContext.Users.Any(u => u.UserName == uid);
+                if (!isExistUsername)
                 {
-                    var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == model.Username);
+                    throw new Exception("User is not existed");
+                }
+                else
+                {
+                    var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == uid);
                     var rolesUser = await _userManager.GetRolesAsync(appUser);
-                    //var fullname = appUser.Fullname;
                     var token = GenerateJwtToken(appUser, rolesUser[0]);
                     LoginSuccessModel successModel = new LoginSuccessModel()
                     {
@@ -98,52 +109,68 @@ namespace Services.Core
                     result.Data = successModel;
                     result.Success = true;
                 }
-                else
-                {
-                    throw new Exception("Invalid Username or Password");
-                }
+
             }
             catch (Exception e)
             {
                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
-            }*/
+            }
             return result;
         }
-        public async Task<ResultModel> Register(UserRegisterModel model, string role)
+        public async Task<ResultModel> Register(UserAuthModel model, string role)
         {
             var result = new ResultModel();
-            /* try
+             try
              {
-                 FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(model.IdToken);
-                 string uid = decodedToken.Uid;
+                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(model.IdToken);
+                string uid = decodedToken.Uid;
 
 
-                 var isExistUsername = _appDbContext.Users.Any(u => u.UserName == uid);
-                 if (isExistUsername)
-                 {
-                     throw new Exception("User existed");
-                 }
-                 User user = _mapper.Map<UserRegisterModel, User>(model);
-                 var createUser = await _userManager.CreateAsync(user, model.Password);
+                var isExistUsername = _appDbContext.Users.Any(u => u.UserName == uid);
+                if (isExistUsername)
+                {
+                    throw new Exception("User existed");
+                }
+                User user = new User() { 
+                    Fullname= model.Fullname,
+                    Email = model.Email,
+                    Balance = 0,
+                    UserName = uid,
+                    IsEnabledMentor = false
+                };
+
+                var createUser = await _userManager.CreateAsync(user);
 
 
-                 if (createUser.Succeeded)
-                 {
-                     await _userManager.AddToRoleAsync(user, role);
-                     _appDbContext.SaveChanges();
-                     result.Data = user.Id;
-                     result.Success = true;
-                 }
-                 else
-                 {
-                     throw new Exception("Register failed");
-                 }
+                if (createUser.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, role);
+                    _appDbContext.SaveChanges();
 
-             }
-             catch (Exception e)
-             {
-                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
-             }*/
+                    var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == uid);
+                    var rolesUser = await _userManager.GetRolesAsync(appUser);
+                    var token = GenerateJwtToken(appUser, rolesUser[0]);
+                    LoginSuccessModel successModel = new LoginSuccessModel()
+                    {
+                        Fullname = appUser.Fullname,
+                        Role = rolesUser[0],
+                        Token = token
+                    };
+
+                    result.Data = successModel;
+                    result.Success = true;
+                }
+                else
+                {
+                    throw new Exception("Register failed");
+                }
+
+            }
+            catch (Exception e)
+            {
+              
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
             return result;
         }
 
@@ -163,6 +190,7 @@ namespace Services.Core
 
             return result;
         }
+
     
     }
 }
