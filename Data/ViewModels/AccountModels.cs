@@ -7,8 +7,8 @@ namespace Data.ViewModels
 {
     public class LoginModel
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string IdToken { get; set; }
+ 
     }
 
     public class LoginSuccessModel
@@ -29,5 +29,15 @@ namespace Data.ViewModels
         public string Fullname { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
+
+        public string Uid { get; set; }
+    }
+
+    public class UserAuthModel
+    {
+        public string Fullname { get; set; }
+        public string Email { get; set; }
+        public string IdToken { get; set; }
+
     }
 }

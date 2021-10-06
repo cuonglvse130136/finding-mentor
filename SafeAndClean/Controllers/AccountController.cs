@@ -23,27 +23,43 @@ namespace SafeAndClean.Controllers
         }
 
         [HttpPost("Auth")]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login(UserAuthModel model)
         {
             var result = await _accountService.Login(model);
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
 
-        [HttpPost("Customer")]
+      /*  [HttpPost("RegisterMentor")]
         public async Task<IActionResult> CustomerRegister(UserRegisterModel model)
         {
-            var result = await _accountService.Register(model, ConstUserRoles.CUSTOMER);
+            var result = await _accountService.Register(model, ConstUserRoles.MENTOR);
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
-        [HttpPost("Employee")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]
+
+        [HttpPost("RegisterStudent")]
+       
         public async Task<IActionResult> EmployeeRegister(UserRegisterModel model)
         {
-            var result = await _accountService.Register(model, ConstUserRoles.EMPLOYEE);
+            var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }*/
+
+        [HttpPost("Register")]
+      /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
+        public async Task<IActionResult> Register(UserAuthModel model)
+        {
+            var result = await _accountService.Register(model, ConstUserRoles.USER);
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
+
+
+
+
+
+
     }
 }

@@ -7,7 +7,9 @@ namespace Data.StaticData
     public class ConstUserRoles
     {
         public const string ADMIN = "ADMIN";
-        public const string CUSTOMER = "CUSTOMER";
-        public const string EMPLOYEE = "EMPLOYEE";
+
+        public const string USER = "USER";
+        public const string STUDENT = "STUDENT";
+        public const string MENTOR = "MENTOR";
     }
 }

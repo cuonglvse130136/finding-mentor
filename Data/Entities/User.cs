@@ -10,8 +10,7 @@ namespace Data.Entities
     [Table("User")]
     public class User : IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Fullname { get; set; }
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }
         public string Gender { get; set; }
@@ -22,13 +21,9 @@ namespace Data.Entities
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
-      
+        public Boolean IsEnabledMentor { get; set; }
 
         public static ClaimsIdentity Identity { get; internal set; }
 
-        public string GetFullName()
-        {
-            return FirstName + " " + LastName;
-        }
     }
 }
