@@ -9,6 +9,5 @@ namespace Data.StaticData
         public const string ADMIN = "ADMIN";
         public const string STUDENT = "STUDENT";
         public const string MENTOR = "MENTOR";
-       
     }
 }

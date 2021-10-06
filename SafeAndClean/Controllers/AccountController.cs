@@ -37,9 +37,19 @@ namespace SafeAndClean.Controllers
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
+
         [HttpPost("RegisterStudent")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]
+       
         public async Task<IActionResult> EmployeeRegister(UserRegisterModel model)
+        {
+            var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
+        [HttpPost("Register")]
+      /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
+        public async Task<IActionResult> Register(UserRegisterModel model)
         {
             var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
             if (result.Success) return Ok(result.Data);

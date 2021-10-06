@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Data.DbContext;
+using Data.FMDbContext;
 using Data.Entities;
 using Data.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +12,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using FirebaseAdmin;
+using FirebaseAdmin.Auth;
+using Google.Apis.Auth.OAuth2;
+using Newtonsoft.Json;
 
 namespace Services.Core
 {
@@ -36,6 +40,16 @@ namespace Services.Core
             _mapper = mapper;
             _appDbContext = appDbContext;
             _configuration = configuration;
+
+            FirebaseConfig fbconfig = new FirebaseConfig();
+            _configuration.Bind("Firebase", fbconfig);
+          
+            var json = JsonConvert.SerializeObject(fbconfig);
+            FirebaseApp.Create(new AppOptions()
+            {
+                Credential = GoogleCredential.FromJson(json)
+            });
+
         }
 
         public object GenerateJwtToken(IdentityUser user, string role)
@@ -66,7 +80,7 @@ namespace Services.Core
         public async Task<ResultModel> Login(LoginModel model)
         {
             var result = new ResultModel();
-            try
+            /*try
             {
                 var signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
                 if (signInResult.Succeeded)
@@ -77,7 +91,7 @@ namespace Services.Core
                     var token = GenerateJwtToken(appUser, rolesUser[0]);
                     LoginSuccessModel successModel = new LoginSuccessModel()
                     {
-                        Fullname = appUser.GetFullName(),
+                        Fullname = appUser.Fullname,
                         Role = rolesUser[0],
                         Token = token
                     };
@@ -92,39 +106,63 @@ namespace Services.Core
             catch (Exception e)
             {
                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
-            }
+            }*/
             return result;
         }
         public async Task<ResultModel> Register(UserRegisterModel model, string role)
         {
             var result = new ResultModel();
-            try
-            {
-                var isExistUsername = _appDbContext.Users.Any(u => u.UserName == model.Username);
-                if (isExistUsername)
-                {
-                    throw new Exception("Username existed");
-                }
-                User user = _mapper.Map<UserRegisterModel, User>(model);
-                var createUser = await _userManager.CreateAsync(user, model.Password);
-                if (createUser.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(user, role);
-                    _appDbContext.SaveChanges();
-                    result.Data = user.Id;
-                    result.Success = true;
-                }
-                else
-                {
-                    throw new Exception("Register failed");
-                }
+            /* try
+             {
+                 FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(model.IdToken);
+                 string uid = decodedToken.Uid;
 
-            }
-            catch (Exception e)
-            {
-                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
-            }
+
+                 var isExistUsername = _appDbContext.Users.Any(u => u.UserName == uid);
+                 if (isExistUsername)
+                 {
+                     throw new Exception("User existed");
+                 }
+                 User user = _mapper.Map<UserRegisterModel, User>(model);
+                 var createUser = await _userManager.CreateAsync(user, model.Password);
+
+
+                 if (createUser.Succeeded)
+                 {
+                     await _userManager.AddToRoleAsync(user, role);
+                     _appDbContext.SaveChanges();
+                     result.Data = user.Id;
+                     result.Success = true;
+                 }
+                 else
+                 {
+                     throw new Exception("Register failed");
+                 }
+
+             }
+             catch (Exception e)
+             {
+                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+             }*/
             return result;
         }
+
+        public async Task<ResultModel> SignInWithGoogle(UserRegisterModel model, string role)
+        {
+
+            var result = new ResultModel();
+
+            try
+            {
+                var idToken = "";
+
+                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
+
+            }
+            catch { }
+
+            return result;
+        }
+    
     }
 }
