@@ -9,7 +9,7 @@ namespace Data.Entities
     public class Course : BaseEntity
     {
         public string Name { get; set; }
-
+        
         public string SubjectId { get; set; }
         [ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; }

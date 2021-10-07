@@ -21,7 +21,8 @@ namespace Data.Entities
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
-        public Boolean IsEnabledMentor { get; set; }
+        public bool IsEnabledMentor { get; set; }
+        public bool IsDisable { get; set; }
 
         public static ClaimsIdentity Identity { get; internal set; }
 
