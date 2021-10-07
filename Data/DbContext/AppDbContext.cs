@@ -38,22 +38,10 @@ namespace Data.DbContext
             #region double pk fk
           
             modelBuilder.Entity<SubjectMajor>().HasKey(s => new { s.MajorId, s.SubjectId });
-
+           
             #endregion
 
             #region seed data
-
-            modelBuilder.Entity<IdentityRole>().HasData(
-            new IdentityRole() { Id = ConstUserRoles.ADMIN, Name = ConstUserRoles.ADMIN, NormalizedName = ConstUserRoles.ADMIN, ConcurrencyStamp = ConstUserRoles.ADMIN },
-            new IdentityRole() { Id = ConstUserRoles.USER, Name = ConstUserRoles.USER, NormalizedName = ConstUserRoles.USER, ConcurrencyStamp = ConstUserRoles.USER }
-           );
-
-            modelBuilder.Entity<User>().HasData(
-                new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b060", UserName = "admin", NormalizedUserName = "admin", Fullname = "Admin Ne`", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==" }
-               );
-            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
-            new IdentityUserRole<string>() { UserId = "3c5ec754-01b1-49cf-94e0-09250222b060", RoleId = ConstUserRoles.ADMIN }
-            );
 
             //modelBuilder.Entity<IdentityRole>().HasData(
             //    new IdentityRole() { Id = ConstUserRoles.ADMIN, Name = ConstUserRoles.ADMIN, NormalizedName = ConstUserRoles.ADMIN, ConcurrencyStamp = ConstUserRoles.ADMIN },
