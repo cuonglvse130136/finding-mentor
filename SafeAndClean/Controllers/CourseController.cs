@@ -28,6 +28,13 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
+        [HttpGet("Filter")]
+        public IActionResult Filter(string name)
+        {
+            var rs = _courseService.Search(name);
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
 
         [HttpPost]
         public IActionResult Add([FromBody] CourseAddModels model)

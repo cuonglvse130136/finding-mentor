@@ -15,6 +15,7 @@ namespace Services.Core
         ResultModel Add(CourseAddModels model);
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
+        ResultModel Search(string name);
     }
 
     public class CourseService : ICourseService
@@ -55,6 +56,22 @@ namespace Services.Core
                 _dbContext.SaveChanges();
 
                 result.Data = major.Id;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+        public ResultModel Search(string name)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var courses = _dbContext.Courses.Where(x=>x.Name.Contains(name)).ToList();
+
+                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
                 result.Success = true;
             }
             catch (Exception e)
