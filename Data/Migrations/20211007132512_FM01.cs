@@ -22,10 +22,10 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Majors",
+                name: "Major",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
@@ -34,14 +34,14 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Majors", x => x.Id);
+                    table.PrimaryKey("PK_Major", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subjects",
+                name: "Subject",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
@@ -50,7 +50,7 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subjects", x => x.Id);
+                    table.PrimaryKey("PK_Subject", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,45 +93,46 @@ namespace Data.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    Fullname = table.Column<string>(nullable: true),
                     BirthDate = table.Column<DateTime>(nullable: false),
                     Address = table.Column<string>(nullable: true),
                     Gender = table.Column<string>(nullable: true),
                     Balance = table.Column<double>(nullable: false),
-                    MajorId = table.Column<Guid>(nullable: true)
+                    MajorId = table.Column<string>(nullable: true),
+                    IsEnabledMentor = table.Column<bool>(nullable: false),
+                    IsDisable = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Majors_MajorId",
+                        name: "FK_AspNetUsers_Major_MajorId",
                         column: x => x.MajorId,
-                        principalTable: "Majors",
+                        principalTable: "Major",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubjectMajors",
+                name: "SubjectMajor",
                 columns: table => new
                 {
-                    SubjectId = table.Column<Guid>(nullable: false),
-                    MajorId = table.Column<Guid>(nullable: false)
+                    SubjectId = table.Column<string>(nullable: false),
+                    MajorId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubjectMajors", x => new { x.MajorId, x.SubjectId });
+                    table.PrimaryKey("PK_SubjectMajor", x => new { x.MajorId, x.SubjectId });
                     table.ForeignKey(
-                        name: "FK_SubjectMajors_Majors_MajorId",
+                        name: "FK_SubjectMajor_Major_MajorId",
                         column: x => x.MajorId,
-                        principalTable: "Majors",
+                        principalTable: "Major",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SubjectMajors_Subjects_SubjectId",
+                        name: "FK_SubjectMajor_Subject_SubjectId",
                         column: x => x.SubjectId,
-                        principalTable: "Subjects",
+                        principalTable: "Subject",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -225,23 +226,23 @@ namespace Data.Migrations
                 name: "Mentor",
                 columns: table => new
                 {
-                    UserId = table.Column<Guid>(nullable: false),
-                    UserId1 = table.Column<string>(nullable: true),
-                    MajorId = table.Column<Guid>(nullable: true),
+                    Id = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    MajorId = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Mentor", x => x.UserId);
+                    table.PrimaryKey("PK_Mentor", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Mentor_Majors_MajorId",
+                        name: "FK_Mentor_Major_MajorId",
                         column: x => x.MajorId,
-                        principalTable: "Majors",
+                        principalTable: "Major",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Mentor_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Mentor_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -266,33 +267,33 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubjectMentors",
+                name: "SubjectMentor",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     MentorId = table.Column<string>(nullable: true),
-                    SubjectId = table.Column<Guid>(nullable: false),
+                    SubjectId = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubjectMentors", x => x.Id);
+                    table.PrimaryKey("PK_SubjectMentor", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SubjectMentors_AspNetUsers_MentorId",
+                        name: "FK_SubjectMentor_AspNetUsers_MentorId",
                         column: x => x.MentorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_SubjectMentors_Subjects_SubjectId",
+                        name: "FK_SubjectMentor_Subject_SubjectId",
                         column: x => x.SubjectId,
-                        principalTable: "Subjects",
+                        principalTable: "Subject",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transactions",
+                name: "Transaction",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -306,9 +307,9 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transactions", x => x.Id);
+                    table.PrimaryKey("PK_Transaction", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transactions_AspNetUsers_UserId",
+                        name: "FK_Transaction_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -316,7 +317,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Courses",
+                name: "Course",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -325,30 +326,30 @@ namespace Data.Migrations
                     DateCreated = table.Column<DateTime>(nullable: false),
                     DateUpdated = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    SubjectId = table.Column<Guid>(nullable: false),
+                    SubjectId = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     Price = table.Column<double>(nullable: false),
                     MentorId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.Id);
+                    table.PrimaryKey("PK_Course", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Courses_Mentor_MentorId",
+                        name: "FK_Course_Mentor_MentorId",
                         column: x => x.MentorId,
                         principalTable: "Mentor",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Courses_Subjects_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Course_Subject_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subject",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Resources",
+                name: "Resource",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -364,17 +365,17 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resources", x => x.Id);
+                    table.PrimaryKey("PK_Resource", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Resources_SubjectMentors_SubjectMentorId",
+                        name: "FK_Resource_SubjectMentor_SubjectMentorId",
                         column: x => x.SubjectMentorId,
-                        principalTable: "SubjectMentors",
+                        principalTable: "SubjectMentor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sections",
+                name: "Section",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -387,17 +388,17 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sections", x => x.Id);
+                    table.PrimaryKey("PK_Section", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sections_Courses_CourseId",
+                        name: "FK_Section_Course_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "Courses",
+                        principalTable: "Course",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentRegistrations",
+                name: "StudentRegistration",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -410,15 +411,15 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentRegistrations", x => x.Id);
+                    table.PrimaryKey("PK_StudentRegistration", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentRegistrations_Courses_CourseId",
+                        name: "FK_StudentRegistration_Course_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "Courses",
+                        principalTable: "Course",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentRegistrations_Student_StudentId",
+                        name: "FK_StudentRegistration_Student_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Student",
                         principalColumn: "Id",
@@ -426,7 +427,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Questions",
+                name: "Question",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -440,20 +441,40 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Questions", x => x.Id);
+                    table.PrimaryKey("PK_Question", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Questions_Sections_SectionId",
+                        name: "FK_Question_Section_SectionId",
                         column: x => x.SectionId,
-                        principalTable: "Sections",
+                        principalTable: "Section",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Questions_Student_StudentId",
+                        name: "FK_Question_Student_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Student",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "ADMIN", "ADMIN", "ADMIN", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "USER", "USER", "USER", "USER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "Balance", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fullname", "Gender", "IsDisable", "IsEnabledMentor", "LockoutEnabled", "LockoutEnd", "MajorId", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "3c5ec754-01b1-49cf-94e0-09250222b060", 0, null, 0.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "882a06da-c1f5-4dd3-add1-1fbf3691d87b", null, false, "Admin Ne`", null, false, false, false, null, null, null, "admin", "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", null, false, "ca4386e7-5e7a-476e-894c-079f925035c9", false, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[] { "3c5ec754-01b1-49cf-94e0-09250222b060", "ADMIN" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -500,13 +521,13 @@ namespace Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_MentorId",
-                table: "Courses",
+                name: "IX_Course_MentorId",
+                table: "Course",
                 column: "MentorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_SubjectId",
-                table: "Courses",
+                name: "IX_Course_SubjectId",
+                table: "Course",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
@@ -515,28 +536,28 @@ namespace Data.Migrations
                 column: "MajorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mentor_UserId1",
+                name: "IX_Mentor_UserId",
                 table: "Mentor",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_SectionId",
-                table: "Questions",
+                name: "IX_Question_SectionId",
+                table: "Question",
                 column: "SectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Questions_StudentId",
-                table: "Questions",
+                name: "IX_Question_StudentId",
+                table: "Question",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Resources_SubjectMentorId",
-                table: "Resources",
+                name: "IX_Resource_SubjectMentorId",
+                table: "Resource",
                 column: "SubjectMentorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sections_CourseId",
-                table: "Sections",
+                name: "IX_Section_CourseId",
+                table: "Section",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
@@ -545,33 +566,33 @@ namespace Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentRegistrations_CourseId",
-                table: "StudentRegistrations",
+                name: "IX_StudentRegistration_CourseId",
+                table: "StudentRegistration",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentRegistrations_StudentId",
-                table: "StudentRegistrations",
+                name: "IX_StudentRegistration_StudentId",
+                table: "StudentRegistration",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubjectMajors_SubjectId",
-                table: "SubjectMajors",
+                name: "IX_SubjectMajor_SubjectId",
+                table: "SubjectMajor",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubjectMentors_MentorId",
-                table: "SubjectMentors",
+                name: "IX_SubjectMentor_MentorId",
+                table: "SubjectMentor",
                 column: "MentorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubjectMentors_SubjectId",
-                table: "SubjectMentors",
+                name: "IX_SubjectMentor_SubjectId",
+                table: "SubjectMentor",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transactions_UserId",
-                table: "Transactions",
+                name: "IX_Transaction_UserId",
+                table: "Transaction",
                 column: "UserId");
         }
 
@@ -593,46 +614,46 @@ namespace Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Questions");
+                name: "Question");
 
             migrationBuilder.DropTable(
-                name: "Resources");
+                name: "Resource");
 
             migrationBuilder.DropTable(
-                name: "StudentRegistrations");
+                name: "StudentRegistration");
 
             migrationBuilder.DropTable(
-                name: "SubjectMajors");
+                name: "SubjectMajor");
 
             migrationBuilder.DropTable(
-                name: "Transactions");
+                name: "Transaction");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Sections");
+                name: "Section");
 
             migrationBuilder.DropTable(
-                name: "SubjectMentors");
+                name: "SubjectMentor");
 
             migrationBuilder.DropTable(
                 name: "Student");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "Course");
 
             migrationBuilder.DropTable(
                 name: "Mentor");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
+                name: "Subject");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Majors");
+                name: "Major");
         }
     }
 }

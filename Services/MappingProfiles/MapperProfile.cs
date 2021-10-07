@@ -32,6 +32,13 @@ namespace Services.MappingProfiles
                 .ReverseMap();
             CreateMap<CourseViewModel, Course>()
                 .ReverseMap();
+            // SUBJECT MODEL
+            CreateMap<SubjectAddModels, Subject>()
+                 .ReverseMap();
+            CreateMap<SubjectUpdateModels, Subject>()
+                .ReverseMap();
+            CreateMap<SubjectViewModel, Subject>()
+                .ReverseMap();
             //.ForMember(m => m.PhoneNumber, map => map.MapFrom(m1 => m1.Phone))
         }
     }

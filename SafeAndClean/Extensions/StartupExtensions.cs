@@ -36,6 +36,7 @@ namespace SafeAndClean.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMajorService, MajorService>();
             services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ISubjectService, SubjectService>();
         }
 
         public static void ConfigCors(this IServiceCollection services)
