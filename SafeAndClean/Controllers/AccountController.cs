@@ -31,28 +31,29 @@ namespace SafeAndClean.Controllers
         }
 
 
-      /*  [HttpPost("RegisterMentor")]
+        /*  [HttpPost("RegisterMentor")]
 
-        public async Task<IActionResult> CustomerRegister(UserRegisterModel model)
-        {
-            var result = await _accountService.Register(model, ConstUserRoles.MENTOR);
-            if (result.Success) return Ok(result.Data);
-            return BadRequest(result.ErrorMessage);
-        }
+          public async Task<IActionResult> CustomerRegister(UserRegisterModel model)
+          {
+              var result = await _accountService.Register(model, ConstUserRoles.MENTOR);
+              if (result.Success) return Ok(result.Data);
+              return BadRequest(result.ErrorMessage);
+          }
 
-        [HttpPost("RegisterStudent")]
-       
-        public async Task<IActionResult> EmployeeRegister(UserRegisterModel model)
-        {
-            var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
-            if (result.Success) return Ok(result.Data);
-            return BadRequest(result.ErrorMessage);
-        }
+          [HttpPost("RegisterStudent")]
+
+          public async Task<IActionResult> EmployeeRegister(UserRegisterModel model)
+          {
+              var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
+              if (result.Success) return Ok(result.Data);
+              return BadRequest(result.ErrorMessage);
+          }
 
 
 
+          [HttpPost("Register")]
+        /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
         [HttpPost("Register")]
-      /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
         public async Task<IActionResult> Register(UserAuthModel model)
         {
             var result = await _accountService.Register(model, ConstUserRoles.USER);
