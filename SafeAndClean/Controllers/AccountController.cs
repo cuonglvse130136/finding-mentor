@@ -49,13 +49,7 @@ namespace SafeAndClean.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
-        [HttpPost("Register")]
-      /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
-        public async Task<IActionResult> Register(UserRegisterModel model)
-        {
-            var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
 
-        }*/
 
         [HttpPost("Register")]
       /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
