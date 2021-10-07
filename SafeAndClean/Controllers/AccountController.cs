@@ -28,6 +28,7 @@ namespace SafeAndClean.Controllers
             var result = await _accountService.Login(model);
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
+            //return BadRequest(result.ErrorMessage);
         }
 
 
