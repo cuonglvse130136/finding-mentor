@@ -51,7 +51,7 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
-                var subject = _dbContext.Majors.FirstOrDefault(s => s.Id == id);
+                var subject = _dbContext.Subjects.FirstOrDefault(s => s.Id == id);
 
                 if (subject == null)
                 {
@@ -59,7 +59,6 @@ namespace Services.Core
                 }
 
                 subject.IsDeleted = true;
-                //service.DateUpdated = DateTime.Now;
 
                 _dbContext.Update(subject);
                 _dbContext.SaveChanges();
