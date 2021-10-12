@@ -25,6 +25,21 @@ namespace Services.MappingProfiles
             CreateMap<MajorUpdateModel, Major>()
                  .ReverseMap();
 
+            //MENTOR MODEL
+            CreateMap<MentorAddModel, Mentor>()
+                .ReverseMap();
+            CreateMap<MentorViewModel, Mentor>()
+                .ReverseMap();
+            CreateMap<MentorUpdateModel, Mentor>()
+                .ReverseMap();
+            //STUDENT MODEL
+            CreateMap<StudentAddModel, Student>()
+                .ReverseMap();
+            CreateMap<StudentViewModel, Student>()
+                .ReverseMap();
+            CreateMap<StudentUpdateModel, Student>()
+                .ReverseMap();
+
             //COURSE MODEL
             CreateMap<CourseAddModels, Course>()
                  .ReverseMap();

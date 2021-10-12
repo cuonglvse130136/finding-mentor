@@ -17,7 +17,7 @@ namespace Data.Entities
 
         public double Balance { get; set; }
 
-        public string? MajorId { get; set; }
+        public string MajorId { get; set; }
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
