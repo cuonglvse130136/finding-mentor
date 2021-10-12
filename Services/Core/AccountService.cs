@@ -23,6 +23,7 @@ namespace Services.Core
     {
         public Task<ResultModel> Login(UserAuthModel model);
         public Task<ResultModel> Register(UserAuthModel model, string role);
+        public Task<ResultModel> LoginAdmin(AdminLoginModel model);
     }
 
     public class AccountService : IAccountService
@@ -191,6 +192,37 @@ namespace Services.Core
             return result;
         }
 
-    
+        public async Task<ResultModel> LoginAdmin(AdminLoginModel model)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
+                if (signInResult.Succeeded)
+                {
+                    var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == model.Username);
+                    var rolesUser = await _userManager.GetRolesAsync(appUser);
+                    var token = GenerateJwtToken(appUser, rolesUser[0]);
+                    LoginSuccessModel successModel = new LoginSuccessModel()
+                    {
+                        Fullname = appUser.Fullname,
+                        Role = rolesUser[0],
+                        Token = token
+                    };
+                    result.Data = successModel;
+                    result.Success = true;
+                }
+                else
+                {
+                    throw new Exception("Invalid Username or Password");
+                }
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
     }
 }
