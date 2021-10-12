@@ -33,6 +33,12 @@ namespace SafeAndClean.Extensions
         public static void BusinessServices(this IServiceCollection services)
         {
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMajorService, MajorService>();
+            services.AddScoped<ICourseService, CourseService>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IMentorService, MentorService>();
+            services.AddScoped<IStudentService, StudentService>();
         }
 
         public static void ConfigCors(this IServiceCollection services)
