@@ -19,7 +19,7 @@ namespace SWP391_FindMentorApp.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
             var rs = _userService.Get(id);

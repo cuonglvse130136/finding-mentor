@@ -20,7 +20,7 @@ namespace SWP391_FindMentorApp.Controllers
             _majorService = majorService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
             var rs = _majorService.Get(id);

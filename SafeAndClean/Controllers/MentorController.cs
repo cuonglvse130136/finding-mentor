@@ -22,7 +22,7 @@ namespace SWP391_FindMentorApp.Controllers
             _MentorService = MentorService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
         public IActionResult Get(Guid? id)
         {

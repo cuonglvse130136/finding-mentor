@@ -20,7 +20,7 @@ namespace SWP391_FindMentorApp.Controllers
             _courseService = courseService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             var rs = _courseService.Get(id);
@@ -28,7 +28,7 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
-        [HttpGet("Filter")]
+        [HttpGet("Search")]
         public IActionResult Filter(string name)
         {
             var rs = _courseService.Search(name);

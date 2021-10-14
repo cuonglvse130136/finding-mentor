@@ -22,7 +22,7 @@ namespace SWP391_FindStudentApp.Controllers
             _StudentService = StudentService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
         public IActionResult Get(Guid? id)
         {
