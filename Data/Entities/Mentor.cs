@@ -10,14 +10,25 @@ namespace Data.Entities
     public class Mentor
     {
         [Key]
-        [ForeignKey("UserId")]
+        
         public Guid Id { get; set; }
-        public virtual User User { get; set; }
+        
 
         public virtual ICollection<Course> Courses { get; set; }
 
+  
+
+        public int Rating { get; set; }
+
+
+        public string MajorId { get; set; }
+        [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
-        public int Status { get; set; }
+
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+
     }
 }

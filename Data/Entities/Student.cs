@@ -10,11 +10,16 @@ namespace Data.Entities
     public class Student
     {
         [Key]
-        [ForeignKey("UserId")]
+        
         public Guid Id { get; set; }
-        public virtual User User { get; set; }
+       
 
         public virtual ICollection<StudentRegistration> StudentRegistrations { get; set; }
-      
+
+
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+
     }
 }

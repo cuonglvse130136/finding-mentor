@@ -3,6 +3,7 @@ using Data.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SafeAndClean.Extensions;
 using Services.Core;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,8 @@ namespace SWP391_FindMentorApp.Controllers
             _MentorService = MentorService;
         }
 
-        [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult Get(Guid? id)
         {
             var result = _MentorService.Get(id);
@@ -32,8 +33,36 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
+        [HttpGet("RecommendMentorByMajor")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public IActionResult RecommendMentorByMajor()
+        {
+            var result = _MentorService.RecommendMentorByMajor(User.GetId());
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+        [HttpGet("RecommendMentor")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public IActionResult RecommendMentor()
+        {
+            var result = _MentorService.RecommendMentor();
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+        [HttpGet("Search/{name}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public IActionResult Search(string name)
+        {
+            var result = _MentorService.Search(name);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult Create([FromBody] MentorAddModel model)
         {
             var result = _MentorService.Create(model);
@@ -43,7 +72,7 @@ namespace SWP391_FindMentorApp.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult Update(Guid id, [FromBody] MentorUpdateModel model)
         {
             var result = _MentorService.Update(id, model);
@@ -53,7 +82,7 @@ namespace SWP391_FindMentorApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult Delete(Guid id)
         {
             var result = _MentorService.Delete(id);

@@ -16,6 +16,7 @@ using FirebaseAdmin;
 using FirebaseAdmin.Auth;
 using Google.Apis.Auth.OAuth2;
 using Newtonsoft.Json;
+using Data.StaticData;
 
 namespace Services.Core
 {
@@ -24,6 +25,7 @@ namespace Services.Core
         public Task<ResultModel> Login(UserAuthModel model);
         public Task<ResultModel> Register(UserAuthModel model, string role);
         public Task<ResultModel> LoginAdmin(AdminLoginModel model);
+        public Task<ResultModel> RegisterNormal(UserRegisterModel model, string role);
     }
 
     public class AccountService : IAccountService
@@ -170,6 +172,52 @@ namespace Services.Core
             catch (Exception e)
             {
               
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+        public async Task<ResultModel> RegisterNormal(UserRegisterModel model, string role)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var isExistUsername = _appDbContext.Users.Any(u => u.UserName == model.Username);
+                if (isExistUsername)
+                {
+                    throw new Exception("Username existed");
+                }
+                User user = _mapper.Map<UserRegisterModel, User>(model);
+                var createUser = await _userManager.CreateAsync(user, model.Password);
+                if (createUser.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, role);
+                    _appDbContext.SaveChanges();
+
+                    if (role.Equals(ConstUserRoles.STUDENT))
+                    {
+                        Student stu = new Student() { UserId = user.Id };
+                        _appDbContext.Add(stu);
+                        _appDbContext.SaveChanges();
+                    }
+                    if (role.Equals(ConstUserRoles.MENTOR))
+                    {
+                        Mentor mentor = new Mentor() { UserId = user.Id , MajorId = user.MajorId, Rating = 0};
+                        _appDbContext.Add(mentor);
+                        _appDbContext.SaveChanges();
+                    }
+
+
+                    result.Data = user.Id;
+                    result.Success = true;
+                }
+                else
+                {
+                    throw new Exception("Register failed");
+                }
+
+            }
+            catch (Exception e)
+            {
                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
             }
             return result;

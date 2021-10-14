@@ -37,34 +37,31 @@ namespace SafeAndClean.Controllers
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
+        [HttpPost("RegisterStudent")]
+        public async Task<IActionResult> RegisterNormal(UserRegisterModel model)
+        {
+            var result = await _accountService.RegisterNormal(model, ConstUserRoles.STUDENT);
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
 
 
-        /*  [HttpPost("RegisterMentor")]
+          [HttpPost("RegisterMentor")]
 
           public async Task<IActionResult> CustomerRegister(UserRegisterModel model)
-          {
-              var result = await _accountService.Register(model, ConstUserRoles.MENTOR);
-              if (result.Success) return Ok(result.Data);
+        {
+            var result = await _accountService.RegisterNormal(model, ConstUserRoles.MENTOR);
+
+            if (result.Success) return Ok(result.Data);
               return BadRequest(result.ErrorMessage);
           }
-
-          [HttpPost("RegisterStudent")]
-
-          public async Task<IActionResult> EmployeeRegister(UserRegisterModel model)
-          {
-              var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
-              if (result.Success) return Ok(result.Data);
-              return BadRequest(result.ErrorMessage);
-          }
-
-
-
-          [HttpPost("Register")]
-        /*  [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ADMIN)]*/
+       
+        
+        //nhớ sửa role nha cường
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserAuthModel model)
         {
-            var result = await _accountService.Register(model, ConstUserRoles.USER);
+            var result = await _accountService.Register(model, ConstUserRoles.STUDENT);
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }

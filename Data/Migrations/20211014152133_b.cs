@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class FM01 : Migration
+    public partial class b : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -227,9 +227,9 @@ namespace Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
+                    Rating = table.Column<int>(nullable: false),
                     MajorId = table.Column<string>(nullable: true),
-                    Status = table.Column<int>(nullable: false)
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -329,7 +329,8 @@ namespace Data.Migrations
                     SubjectId = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     Price = table.Column<double>(nullable: false),
-                    MentorId = table.Column<Guid>(nullable: false)
+                    MentorId = table.Column<Guid>(nullable: false),
+                    Rating = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -459,17 +460,17 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ADMIN", "ADMIN", "ADMIN", "ADMIN" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "USER", "USER", "USER", "USER" });
+                values: new object[,]
+                {
+                    { "ADMIN", "ADMIN", "ADMIN", "ADMIN" },
+                    { "MENTOR", "MENTOR", "MENTOR", "MENTOR" },
+                    { "STUDENT", "STUDENT", "STUDENT", "STUDENT" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "Balance", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fullname", "Gender", "IsDisable", "IsEnabledMentor", "LockoutEnabled", "LockoutEnd", "MajorId", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3c5ec754-01b1-49cf-94e0-09250222b060", 0, null, 0.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "882a06da-c1f5-4dd3-add1-1fbf3691d87b", null, false, "Admin Ne`", null, false, false, false, null, null, null, "admin", "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", null, false, "ca4386e7-5e7a-476e-894c-079f925035c9", false, "admin" });
+                values: new object[] { "3c5ec754-01b1-49cf-94e0-09250222b060", 0, null, 0.0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "612dfff4-7545-47a4-a110-92654647b8e2", null, false, "Admin Ne`", null, false, false, false, null, null, null, "admin", "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", null, false, "96acd49e-af95-4ca4-ba1d-47148c4f483c", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

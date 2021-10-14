@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211007132512_FM01")]
-    partial class FM01
+    [Migration("20211014152133_b")]
+    partial class b
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,9 @@ namespace Data.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -97,7 +100,7 @@ namespace Data.Migrations
                     b.Property<string>("MajorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -463,7 +466,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "882a06da-c1f5-4dd3-add1-1fbf3691d87b",
+                            ConcurrencyStamp = "612dfff4-7545-47a4-a110-92654647b8e2",
                             EmailConfirmed = false,
                             Fullname = "Admin Ne`",
                             IsDisable = false,
@@ -472,7 +475,7 @@ namespace Data.Migrations
                             NormalizedUserName = "admin",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ca4386e7-5e7a-476e-894c-079f925035c9",
+                            SecurityStamp = "96acd49e-af95-4ca4-ba1d-47148c4f483c",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -514,10 +517,17 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = "USER",
-                            ConcurrencyStamp = "USER",
-                            Name = "USER",
-                            NormalizedName = "USER"
+                            Id = "MENTOR",
+                            ConcurrencyStamp = "MENTOR",
+                            Name = "MENTOR",
+                            NormalizedName = "MENTOR"
+                        },
+                        new
+                        {
+                            Id = "STUDENT",
+                            ConcurrencyStamp = "STUDENT",
+                            Name = "STUDENT",
+                            NormalizedName = "STUDENT"
                         });
                 });
 

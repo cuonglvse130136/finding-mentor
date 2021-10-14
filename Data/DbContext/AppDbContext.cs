@@ -46,7 +46,8 @@ namespace Data.DbContext
 
             modelBuilder.Entity<IdentityRole>().HasData(
             new IdentityRole() { Id = ConstUserRoles.ADMIN, Name = ConstUserRoles.ADMIN, NormalizedName = ConstUserRoles.ADMIN, ConcurrencyStamp = ConstUserRoles.ADMIN },
-            new IdentityRole() { Id = ConstUserRoles.USER, Name = ConstUserRoles.USER, NormalizedName = ConstUserRoles.USER, ConcurrencyStamp = ConstUserRoles.USER }
+            new IdentityRole() { Id = ConstUserRoles.MENTOR, Name = ConstUserRoles.MENTOR, NormalizedName = ConstUserRoles.MENTOR, ConcurrencyStamp = ConstUserRoles.MENTOR },
+            new IdentityRole() { Id = ConstUserRoles.STUDENT, Name = ConstUserRoles.STUDENT, NormalizedName = ConstUserRoles.STUDENT, ConcurrencyStamp = ConstUserRoles.STUDENT }
            );
 
             modelBuilder.Entity<User>().HasData(

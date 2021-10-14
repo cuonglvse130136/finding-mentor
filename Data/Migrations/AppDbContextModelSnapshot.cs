@@ -46,6 +46,9 @@ namespace Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -95,7 +98,7 @@ namespace Data.Migrations
                     b.Property<string>("MajorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -461,7 +464,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "c9b3d1aa-14fb-4d69-b8c9-cc1f07b29455",
+                            ConcurrencyStamp = "612dfff4-7545-47a4-a110-92654647b8e2",
                             EmailConfirmed = false,
                             Fullname = "Admin Ne`",
                             IsDisable = false,
@@ -470,7 +473,7 @@ namespace Data.Migrations
                             NormalizedUserName = "admin",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "40750a7c-3bbc-48b0-a4c3-0938cc0ba167",
+                            SecurityStamp = "96acd49e-af95-4ca4-ba1d-47148c4f483c",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -512,10 +515,17 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = "USER",
-                            ConcurrencyStamp = "USER",
-                            Name = "USER",
-                            NormalizedName = "USER"
+                            Id = "MENTOR",
+                            ConcurrencyStamp = "MENTOR",
+                            Name = "MENTOR",
+                            NormalizedName = "MENTOR"
+                        },
+                        new
+                        {
+                            Id = "STUDENT",
+                            ConcurrencyStamp = "STUDENT",
+                            Name = "STUDENT",
+                            NormalizedName = "STUDENT"
                         });
                 });
 

@@ -20,6 +20,7 @@ namespace Data.Entities
         public Guid MentorId { get; set; }
         [ForeignKey("MentorId")]
         public virtual Mentor Mentor { get; set; }
+        public int Rating { get; set; }
 
 
         public virtual ICollection<StudentRegistration> StudentRegistrations { get; set; }

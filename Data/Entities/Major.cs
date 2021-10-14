@@ -9,7 +9,7 @@ namespace Data.Entities
     public class Major
     {
 
-        public String Id { get; set; }
+        public string Id { get; set; }
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
