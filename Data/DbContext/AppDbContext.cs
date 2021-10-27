@@ -130,10 +130,28 @@ namespace Data.DbContext
             );
 
             modelBuilder.Entity<SubjectMajor>().HasData(
-    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ001" },
-    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ002" },
-    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ003" }
-    );
+                    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ001" },
+                    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ002" },
+                    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ003" },
+                    new SubjectMajor() { MajorId = "SE", SubjectId = "PRF001" },
+                    new SubjectMajor() { MajorId = "SE", SubjectId = "PRF002" },
+                    new SubjectMajor() { MajorId = "SE", SubjectId = "PRF003" },
+                    new SubjectMajor() { MajorId = "SA", SubjectId = "ENG001" },
+                    new SubjectMajor() { MajorId = "SA", SubjectId = "ENG002" },
+                    new SubjectMajor() { MajorId = "SA", SubjectId = "ENG003" },
+                    new SubjectMajor() { MajorId = "SJ", SubjectId = "JPN001" },
+                    new SubjectMajor() { MajorId = "SJ", SubjectId = "JPN002" },
+                    new SubjectMajor() { MajorId = "SJ", SubjectId = "JPN003" },
+                    new SubjectMajor() { MajorId = "CN", SubjectId = "CNN001" },
+                    new SubjectMajor() { MajorId = "CN", SubjectId = "CNN002" },
+                    new SubjectMajor() { MajorId = "CN", SubjectId = "CNN003" },
+                    new SubjectMajor() { MajorId = "SB", SubjectId = "MKT001" },
+                    new SubjectMajor() { MajorId = "SB", SubjectId = "MKT002" },
+                    new SubjectMajor() { MajorId = "SB", SubjectId = "MKT003" },
+                    new SubjectMajor() { MajorId = "GD", SubjectId = "GDS001" },
+                    new SubjectMajor() { MajorId = "GD", SubjectId = "GDS002" },
+                    new SubjectMajor() { MajorId = "GD", SubjectId = "GDS003" }
+            );
 
             //many course
             //new Subject() { Id = "HCM001", Name = "Ho Chi Minh History" },
