@@ -27,4 +27,10 @@ namespace Data.ViewModels
         public string Description { get; set; }
         public string Name { get; set; }
     }
+    public class MajorViewModel1
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+
+    }
 }

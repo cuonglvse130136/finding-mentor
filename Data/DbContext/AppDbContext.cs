@@ -129,6 +129,12 @@ namespace Data.DbContext
                 new Subject() { Id = "GDS003", Name = "Design Advance" }
             );
 
+            modelBuilder.Entity<SubjectMajor>().HasData(
+    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ001" },
+    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ002" },
+    new SubjectMajor() { MajorId = "SE", SubjectId = "PRJ003" }
+    );
+
             //many course
             //new Subject() { Id = "HCM001", Name = "Ho Chi Minh History" },
             //new Subject() { Id = "VNR001", Name = "Vietnam Road" },
@@ -207,11 +213,13 @@ namespace Data.DbContext
 
             );
 
-            //modelBuilder.Entity<IdentityRole>().HasData(
-            //    new IdentityRole() { Id = ConstUserRoles.ADMIN, Name = ConstUserRoles.ADMIN, NormalizedName = ConstUserRoles.ADMIN, ConcurrencyStamp = ConstUserRoles.ADMIN },
-            //    new IdentityRole() { Id = ConstUserRoles.CUSTOMER, Name = ConstUserRoles.CUSTOMER, NormalizedName = ConstUserRoles.CUSTOMER, ConcurrencyStamp = ConstUserRoles.CUSTOMER },
-            //    new IdentityRole() { Id = ConstUserRoles.EMPLOYEE, Name = ConstUserRoles.EMPLOYEE, NormalizedName = ConstUserRoles.EMPLOYEE, ConcurrencyStamp = ConstUserRoles.EMPLOYEE }
-            //    );
+
+
+            //        modelBuilder.Entity<IdentityRole>().HasData(
+            //new IdentityRole() { Id = ConstUserRoles.ADMIN, Name = ConstUserRoles.ADMIN, NormalizedName = ConstUserRoles.ADMIN, ConcurrencyStamp = ConstUserRoles.ADMIN },
+            //new IdentityRole() { Id = ConstUserRoles.CUSTOMER, Name = ConstUserRoles.CUSTOMER, NormalizedName = ConstUserRoles.CUSTOMER, ConcurrencyStamp = ConstUserRoles.CUSTOMER },
+            //new IdentityRole() { Id = ConstUserRoles.EMPLOYEE, Name = ConstUserRoles.EMPLOYEE, NormalizedName = ConstUserRoles.EMPLOYEE, ConcurrencyStamp = ConstUserRoles.EMPLOYEE }
+            //);
             //modelBuilder.Entity<User>().HasData(
             //    new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b060", UserName = "admin", NormalizedUserName = "admin", Fullname = "Admin Ne`", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==" }
             //    );

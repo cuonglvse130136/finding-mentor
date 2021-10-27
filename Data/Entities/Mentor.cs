@@ -10,25 +10,27 @@ namespace Data.Entities
     public class Mentor
     {
         [Key]
-        
         public Guid Id { get; set; }
         
-
         public virtual ICollection<Course> Courses { get; set; }
-
-  
 
         public int Rating { get; set; }
 
+        public bool IsGraduted { get; set; }
+
+        public string About { get; set; }
+
+        public string Company { get; set; }
 
         public string MajorId { get; set; }
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
-
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
+
+        public virtual ICollection<SubjectMentor> SubjectMentors { get; set; } = new HashSet<SubjectMentor>();
 
     }
 }

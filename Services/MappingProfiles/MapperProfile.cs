@@ -19,7 +19,7 @@ namespace Services.MappingProfiles
 
             //MAJOR MODEL
             CreateMap<MajorViewModel, Major>()
-                .ReverseMap(); 
+                .ReverseMap();
             CreateMap<MajorAddModel, Major>()
                  .ReverseMap();
             CreateMap<MajorUpdateModel, Major>()
@@ -28,12 +28,29 @@ namespace Services.MappingProfiles
             //MENTOR MODEL
             CreateMap<MentorAddModel, Mentor>()
                 .ReverseMap();
-            CreateMap<MentorViewModel, Mentor>()
+            CreateMap<Mentor, MentorViewModel>()
+                .ForMember(m => m.Fullname, map => map.MapFrom(m1 => m1.User.Fullname))
+                .ForMember(m => m.BirthDate, map => map.MapFrom(m1 => m1.User.BirthDate))
+                .ForMember(m => m.Address, map => map.MapFrom(m1 => m1.User.Address))
+                .ForMember(m => m.Gender, map => map.MapFrom(m1 => m1.User.Gender))
+                .ForMember(m => m.IsEnabledMentor, map => map.MapFrom(m1 => m1.User.IsEnabledMentor))
                 .ReverseMap();
             CreateMap<MentorUpdateModel, Mentor>()
                 .ReverseMap();
             CreateMap<User, MentorViewModel>()
                 .ReverseMap();
+
+            //askldj
+            CreateMap<Subject, SubjectViewModel1>()
+               .ReverseMap();
+            CreateMap<Major, MajorViewModel1>()
+                .ReverseMap();
+            CreateMap<Mentor, MentorDataModel>()
+                  .ForMember(m => m.SubjectViewModels, map => map.Ignore())
+                .ForMember(m => m.MajorViewModel, map => map.MapFrom(m1 => m1.Major))
+                 .ReverseMap();
+
+
             //STUDENT MODEL
             CreateMap<StudentAddModel, Student>()
                 .ReverseMap();

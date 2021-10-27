@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Services.Core
 {
@@ -19,6 +18,9 @@ namespace Services.Core
         ResultModel RecommendMentorByMajor(string userId);
         ResultModel Search(string name);
         ResultModel RecommendMentor();
+
+        ResultModel GetMentorInformation(string id);
+
     }
     public class MentorService : IMentorService
     {
@@ -36,7 +38,15 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
-                var mentors = _dbContext.Mentors.Include(m => m.User).Where(s => id == null || (s.Id == id)).ToList();
+                var mentors = _dbContext.Mentors.Include(m => m.User)
+                                                .Where(s => id == null || (s.Id == id)).ToList();
+
+                //foreach (var mentor in mentors)
+                //{
+                //    var subjects = _dbContext.SubjectMentors.Where(s => s.MentorId == mentor.UserId).ToList();
+
+                //    var majors = _dbContext.maj
+                //}
 
                 result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
                 result.Success = true;
@@ -47,6 +57,44 @@ namespace Services.Core
             }
             return result;
         }
+
+        public ResultModel GetMentorInformation(string id)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var user = _dbContext.User.FirstOrDefault(f => f.Id == id);
+
+                var data = _mapper.Map<User, MentorViewModel>(user);
+
+                var mentors = _dbContext.Mentors
+                    .Include(m => m.User)
+                    .Include(m => m.SubjectMentors)
+                    .Include(m => m.Major)
+                    .Where(s => s.UserId == id)
+                    .ToList();
+
+                for (int i = 0; i < mentors.Count; i++)
+                {
+                    var subjects = _dbContext.Subjects.Where(s => mentors[i].SubjectMentors.Select(s => s.SubjectId).Contains(s.Id)).ToList();
+
+                    MentorDataModel mentor = _mapper.Map<Mentor, MentorDataModel>(mentors[i]);
+
+                    mentor.SubjectViewModels = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
+
+                    data.Data.Add(mentor);
+                }
+
+                result.Data = data;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
         public ResultModel RecommendMentorByMajor(string userId)
         {
             var result = new ResultModel();
@@ -54,9 +102,9 @@ namespace Services.Core
             {
                 var users = _dbContext.Users.FirstOrDefault(s => s.Id == userId);
 
-                var mentors = _dbContext.Mentors.Include(m => m.User).Where(s => s.MajorId == users.MajorId).OrderByDescending(s => s.Rating ).Take(5).ToList();
-                                                
-                
+                var mentors = _dbContext.Mentors.Include(m => m.User).Where(s => s.MajorId == users.MajorId).OrderByDescending(s => s.Rating).Take(5).ToList();
+
+
                 result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
                 result.Success = true;
             }
@@ -151,7 +199,7 @@ namespace Services.Core
                 }
 
                 mentor = _mapper.Map<MentorUpdateModel, Mentor>(model);
-                
+
 
                 _dbContext.Update(mentor);
                 _dbContext.SaveChanges();
@@ -178,7 +226,7 @@ namespace Services.Core
                     throw new Exception("Invalid Id");
                 }
 
-                
+
 
                 _dbContext.Update(mentor);
                 _dbContext.SaveChanges();

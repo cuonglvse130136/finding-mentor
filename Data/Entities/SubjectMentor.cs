@@ -6,15 +6,14 @@ using System.Text;
 
 namespace Data.Entities
 {
-    [Table("SubjectMentor")]
     public class SubjectMentor
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public string MentorId { get; set; }
+        public Guid MentorId { get; set; }
         [ForeignKey("MentorId")]
-        public virtual User Mentor { get; set; }
+        public virtual Mentor Mentor { get; set; }
 
         public string SubjectId { get; set; }
         [ForeignKey("SubjectId")]

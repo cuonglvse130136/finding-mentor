@@ -14,22 +14,26 @@ namespace Data.ViewModels
         public string MajorId { get; set; }
     }
 
-    public class MentorViewModel { 
-
-
-        public string Id { get; set; }
-        public string Fullname { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Address { get; set; }
-        public string Gender { get; set; }
-
-        public double Balance { get; set; }
-
-        public string MajorId { get; set; }
-
-        public bool IsEnabledMentor { get; set; }
-        public bool IsDisable { get; set; }
+    public class MentorViewModel: UserViewModels
+    {
+        public List<MentorDataModel> Data { get; set; } = new List<MentorDataModel>();
     }
+
+    public class MentorDataModel
+    {
+        public int Rating { get; set; }
+
+        public bool IsGraduted { get; set; }
+
+        public string About { get; set; }
+
+        public string Company { get; set; }
+
+        public List<SubjectViewModel1> SubjectViewModels { get; set; } = new List<SubjectViewModel1>();
+
+        public MajorViewModel1 MajorViewModel { get; set; }
+    }
+    
     public class MentorUpdateModel
     {
         public string Fullname { get; set; }
@@ -44,5 +48,4 @@ namespace Data.ViewModels
     {
         public int Rating { get; set; }
     }
-    
 }

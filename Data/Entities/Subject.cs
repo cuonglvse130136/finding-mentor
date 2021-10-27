@@ -17,6 +17,6 @@ namespace Data.Entities
         public DateTime DateUpdated { get; set; } = DateTime.Now;
         public string Name { get; set; }
 
-        public virtual ICollection<SubjectMajor> SubjectMajors { get; set; }
+        public virtual ICollection<SubjectMentor> SubjectMentors { get; set; } = new HashSet<SubjectMentor>();
     }
 }

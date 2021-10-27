@@ -51,6 +51,17 @@ namespace SWP391_FindMentorApp.Controllers
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
+
+        [HttpGet("Information/{id}")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        public IActionResult Information(string id)
+        {
+            var result = _MentorService.GetMentorInformation(id);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
         [HttpGet("Search/{name}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult Search(string name)
