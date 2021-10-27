@@ -2,6 +2,7 @@
 using Data.DbContext;
 using Data.Entities;
 using Data.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace Services.Core
         ResultModel Add(SubjectAddModels model);
         ResultModel Update(string id, SubjectUpdateModels model);
         ResultModel Delete(string id);
+        ResultModel GetAllSubjectByMajorId(string id);
+
+
+
     }
     public class SubjectService : ISubjectService
     {
@@ -90,6 +95,25 @@ namespace Services.Core
             }
             return result;
         }
+        public ResultModel GetAllSubjectByMajorId(string id)
+        {
+
+            var result = new ResultModel();
+            try
+            {
+                var subjectmajor = _dbContext.SubjectMajors.Include(m => m.Subject).Where(m => m.MajorId == id).Select(m => m.Subject).ToList();
+
+
+                result.Data = _mapper.Map<List<Subject>, List<SubjectViewModel>>(subjectmajor);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+       
 
         public ResultModel Update(string id, SubjectUpdateModels model)
         {

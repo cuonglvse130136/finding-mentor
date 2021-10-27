@@ -28,6 +28,14 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
+        [HttpGet("GetAllMajor")]
+        public IActionResult GetAllMajor()
+        {
+            var rs = _majorService.GetAllMajor();
+
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
 
         [HttpPost]
         public IActionResult Add([FromBody] MajorAddModel model)

@@ -15,6 +15,7 @@ namespace Services.Core
         ResultModel Add(MajorAddModel model);
         ResultModel Update(string id, MajorUpdateModel model);
         ResultModel Delete(string id);
+        ResultModel GetAllMajor();
     }
 
     public class MajorService : IMajorService
@@ -34,6 +35,24 @@ namespace Services.Core
             try
             {
                 var major = _dbContext.Majors.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).ToList();
+
+                result.Data = _mapper.Map<List<Major>, List<MajorViewModel>>(major);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
+        public ResultModel GetAllMajor()
+        {
+            var result = new ResultModel();
+            try
+            {
+                var major = _dbContext.Majors.ToList();
+                                                     
 
                 result.Data = _mapper.Map<List<Major>, List<MajorViewModel>>(major);
                 result.Success = true;

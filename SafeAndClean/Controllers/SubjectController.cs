@@ -28,6 +28,15 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
+        [HttpGet("GetAllSubjectByMajorId")]
+        public IActionResult GetAllSubjectById(string id)
+        {
+            var rs = _subjectService.GetAllSubjectByMajorId(id);
+
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
+       
 
         [HttpPost]
         public IActionResult Add([FromBody] SubjectAddModels model)
