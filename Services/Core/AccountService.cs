@@ -162,6 +162,12 @@ namespace Services.Core
 
                     result.Data = successModel;
                     result.Success = true;
+                    Student stu = new Student()
+                    {
+                        UserId = appUser.Id
+                    };
+                    _appDbContext.Add(stu);
+                    _appDbContext.SaveChanges();
                 }
                 else
                 {

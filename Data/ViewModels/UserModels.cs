@@ -6,6 +6,7 @@ namespace Data.ViewModels
 {
     public class UserViewModels
     {
+        public string Id { get; set; }
         public string Fullname { get; set; }
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }

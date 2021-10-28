@@ -52,6 +52,16 @@ namespace SWP391_FindStudentApp.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
+        [HttpPut("Major{id}/{majorid}")]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        public IActionResult UpdateMajor(Guid id, string majorid)
+        {
+            var result = _StudentService.UpdateMajor(id, majorid);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
         public IActionResult Delete(Guid id)

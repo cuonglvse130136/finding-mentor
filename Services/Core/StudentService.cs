@@ -2,6 +2,7 @@
 using Data.DbContext;
 using Data.Entities;
 using Data.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Services.Core
         ResultModel Get(Guid? id);
         ResultModel Create(StudentAddModel model);
         ResultModel Update(Guid id, StudentUpdateModel model);
+        ResultModel UpdateMajor(Guid id, string majorid);
         ResultModel Delete(Guid id);
     }
     public class StudentService : IStudentService
@@ -80,6 +82,35 @@ namespace Services.Core
 
 
                 _dbContext.Update(student);
+                _dbContext.SaveChanges();
+
+                result.Data = student.Id;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
+        public ResultModel UpdateMajor (Guid id, string majorid)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var student = _dbContext.Students.FirstOrDefault(s => s.Id == id);
+
+                if (student == null)
+                {
+                    throw new Exception("Invalid Id");
+                }
+
+                var user = _dbContext.Users.FirstOrDefault(u => u.Id == student.UserId);
+
+                user.MajorId = majorid;
+
+                _dbContext.Update(user);
                 _dbContext.SaveChanges();
 
                 result.Data = student.Id;

@@ -103,6 +103,7 @@ namespace Data.DbContext
                 new Mentor() { Id = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219400"), MajorId = "CN", UserId = "3c5ec754-01b1-49cf-94e0-09250222b072" }
             );
             #endregion
+
             #region Seed SubjectMentor data
             modelBuilder.Entity<SubjectMentor>().HasData(
                 new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4800-962e-a317ab219379"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219379"), SubjectId = "PRJ001", Name = "Java OOP" },
