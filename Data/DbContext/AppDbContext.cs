@@ -103,6 +103,32 @@ namespace Data.DbContext
                 new Mentor() { Id = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219400"), MajorId = "CN", UserId = "3c5ec754-01b1-49cf-94e0-09250222b072" }
             );
             #endregion
+            #region Seed SubjectMentor data
+            modelBuilder.Entity<SubjectMentor>().HasData(
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4800-962e-a317ab219379"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219379"), SubjectId = "PRJ001", Name = "Java OOP" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4801-962e-a317ab219380"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219380"), SubjectId = "ENG001" , Name = "English 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4802-962e-a317ab219381"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219381"), SubjectId = "PRJ002", Name = "Java Desktop" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4803-962e-a317ab219382"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219382"), SubjectId = "ENG002", Name = "English 2" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4804-962e-a317ab219383"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219383"), SubjectId = "PRJ003", Name = "Java Web" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4805-962e-a317ab219384"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219384"), SubjectId = "JPN001", Name = "Japanese 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4806-962e-a317ab219385"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219385"), SubjectId = "PRJ001", Name = "Java OOP" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4807-962e-a317ab219386"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219386"), SubjectId = "JPN002", Name = "Japanese 2" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4808-962e-a317ab219387"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219387"), SubjectId = "ENG003", Name = "English 3" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4809-962e-a317ab219388"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219388"), SubjectId = "JPN003", Name = "Japanese 3" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4810-962e-a317ab219389"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219389"), SubjectId = "CNN001", Name = "Chinese 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4811-962e-a317ab219390"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219390"), SubjectId = "ENG001", Name = "English 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4812-962e-a317ab219391"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219391"), SubjectId = "JPN001", Name = "Japanese 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4813-962e-a317ab219392"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219392"), SubjectId = "CNN002", Name = "Chinese 2" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4814-962e-a317ab219393"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219393"), SubjectId = "GDS001", Name = "History of Graphic Design" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4815-962e-a317ab219394"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219394"), SubjectId = "ENG002", Name = "English 2" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4816-962e-a317ab219395"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219395"), SubjectId = "GDS002", Name = "Design Basic" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4817-962e-a317ab219396"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219396"), SubjectId = "ENG003", Name = "English 3" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4818-962e-a317ab219397"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219397"), SubjectId = "ENG001", Name = "English 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4819-962e-a317ab219398"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219398"), SubjectId = "MKT001", Name = "Marketing 1" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4820-962e-a317ab219399"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219399"), SubjectId = "ENG002", Name = "English 2" },
+                new SubjectMentor() { Id = Guid.Parse("3f0c7479-25cd-4821-962e-a317ab219400"), MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219400"), SubjectId = "MKT002", Name = "Marketing 2" }
+            );
+            #endregion
 
             #region Seed Subject data
             modelBuilder.Entity<Subject>().HasData(

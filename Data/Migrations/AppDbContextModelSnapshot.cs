@@ -67,8 +67,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e336"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(6873),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(6879),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 391, DateTimeKind.Local).AddTicks(1943),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 391, DateTimeKind.Local).AddTicks(1949),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219379"),
                             Name = "Course 1",
@@ -80,8 +80,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e337"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9193),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9212),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(4934),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(4955),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219381"),
                             Name = "Course 2",
@@ -93,8 +93,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e338"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9333),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9334),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5064),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5065),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219383"),
                             Name = "Course 3",
@@ -106,8 +106,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e339"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9350),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9351),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5080),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5081),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219379"),
                             Name = "Course 4",
@@ -119,8 +119,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e340"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9364),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9365),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5095),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5096),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219381"),
                             Name = "Course 5",
@@ -132,8 +132,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e341"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9376),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9377),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5201),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5202),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219383"),
                             Name = "Course 6",
@@ -145,8 +145,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e342"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9387),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9388),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5214),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5215),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219387"),
                             Name = "Course 7",
@@ -158,8 +158,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e343"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9398),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9399),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5227),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5228),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219390"),
                             Name = "Course 8",
@@ -171,8 +171,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e344"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9410),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9411),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5237),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5238),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219394"),
                             Name = "Course 9",
@@ -184,8 +184,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e345"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9420),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9421),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5248),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5250),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219386"),
                             Name = "Course 10",
@@ -197,8 +197,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e346"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9430),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9432),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5259),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5260),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219388"),
                             Name = "Course 11",
@@ -210,8 +210,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e347"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9441),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9442),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5270),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5271),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219391"),
                             Name = "Course 12",
@@ -223,8 +223,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e348"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9452),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9453),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5280),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5281),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219389"),
                             Name = "Course 13",
@@ -236,8 +236,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e349"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9462),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9463),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5291),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5292),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219392"),
                             Name = "Course 14",
@@ -249,8 +249,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e350"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9473),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9474),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5302),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5303),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219400"),
                             Name = "Course 15",
@@ -262,8 +262,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e351"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9483),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9484),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5312),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5313),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219397"),
                             Name = "Course 16",
@@ -275,8 +275,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e352"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9494),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9495),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5323),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5324),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219397"),
                             Name = "Course 17",
@@ -288,8 +288,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e353"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9504),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9505),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5333),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5335),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219399"),
                             Name = "Course 18",
@@ -301,8 +301,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e354"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9515),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9516),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5344),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5345),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219393"),
                             Name = "Course 19",
@@ -314,8 +314,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e355"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9526),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9527),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5354),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5355),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219395"),
                             Name = "Course 20",
@@ -327,8 +327,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("1d6940a7-7035-4bc0-baa4-06174e05e356"),
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9536),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 761, DateTimeKind.Local).AddTicks(9537),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5364),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 393, DateTimeKind.Local).AddTicks(5365),
                             IsDeleted = false,
                             MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219395"),
                             Name = "Course 21",
@@ -367,48 +367,48 @@ namespace Data.Migrations
                         new
                         {
                             Id = "SE",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 757, DateTimeKind.Local).AddTicks(6678),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(8515),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 389, DateTimeKind.Local).AddTicks(3978),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(2743),
                             IsDeleted = false,
                             Name = "Software Engineering"
                         },
                         new
                         {
                             Id = "SB",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9643),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9647),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3506),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3510),
                             IsDeleted = false,
                             Name = "Economic"
                         },
                         new
                         {
                             Id = "SA",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9665),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9666),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3525),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3527),
                             IsDeleted = false,
                             Name = "English"
                         },
                         new
                         {
                             Id = "CN",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9668),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9669),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3528),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3529),
                             IsDeleted = false,
                             Name = "Chinese"
                         },
                         new
                         {
                             Id = "SJ",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9671),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9672),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3531),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3532),
                             IsDeleted = false,
                             Name = "Japanese"
                         },
                         new
                         {
                             Id = "GD",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9674),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 758, DateTimeKind.Local).AddTicks(9675),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3580),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(3582),
                             IsDeleted = false,
                             Name = "Graphic Design"
                         });
@@ -809,168 +809,168 @@ namespace Data.Migrations
                         new
                         {
                             Id = "PRJ001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4002),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4009),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9159),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9165),
                             IsDeleted = false,
                             Name = "Java OOP"
                         },
                         new
                         {
                             Id = "PRJ002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4577),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4581),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9733),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9736),
                             IsDeleted = false,
                             Name = "Java Desktop"
                         },
                         new
                         {
                             Id = "PRJ003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4611),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4612),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9753),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9754),
                             IsDeleted = false,
                             Name = "Java Web"
                         },
                         new
                         {
                             Id = "PRF001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4614),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4615),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9756),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9757),
                             IsDeleted = false,
                             Name = "C"
                         },
                         new
                         {
                             Id = "PRF002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4617),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4618),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9759),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9760),
                             IsDeleted = false,
                             Name = "C++"
                         },
                         new
                         {
                             Id = "PRF003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4620),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4621),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9762),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9763),
                             IsDeleted = false,
                             Name = "C#"
                         },
                         new
                         {
                             Id = "ENG001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4623),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4624),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9765),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9766),
                             IsDeleted = false,
                             Name = "English 1"
                         },
                         new
                         {
                             Id = "ENG002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4626),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4627),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9768),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9769),
                             IsDeleted = false,
                             Name = "English 2"
                         },
                         new
                         {
                             Id = "ENG003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4628),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4629),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9770),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9771),
                             IsDeleted = false,
                             Name = "English 3"
                         },
                         new
                         {
                             Id = "JPN001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4631),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4632),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9773),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9774),
                             IsDeleted = false,
                             Name = "Japanese 1"
                         },
                         new
                         {
                             Id = "JPN002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4634),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4635),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9776),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9777),
                             IsDeleted = false,
                             Name = "Japanese 2"
                         },
                         new
                         {
                             Id = "JPN003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4637),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4638),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9778),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9779),
                             IsDeleted = false,
                             Name = "Japanese 3"
                         },
                         new
                         {
                             Id = "CNN001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4639),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4640),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9781),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9782),
                             IsDeleted = false,
                             Name = "Chinese 1"
                         },
                         new
                         {
                             Id = "CNN002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4642),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4643),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9784),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9785),
                             IsDeleted = false,
                             Name = "Chinese 2"
                         },
                         new
                         {
                             Id = "CNN003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4645),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4646),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9787),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9788),
                             IsDeleted = false,
                             Name = "Chinese 3"
                         },
                         new
                         {
                             Id = "MKT001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4648),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4649),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9790),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9791),
                             IsDeleted = false,
                             Name = "Marketing 1"
                         },
                         new
                         {
                             Id = "MKT002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4651),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4652),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9792),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9793),
                             IsDeleted = false,
                             Name = "Marketing 2"
                         },
                         new
                         {
                             Id = "MKT003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4653),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4655),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9795),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9796),
                             IsDeleted = false,
                             Name = "Marketing 3"
                         },
                         new
                         {
                             Id = "GDS001",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4656),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4657),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9798),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9799),
                             IsDeleted = false,
                             Name = "History of Graphic Design"
                         },
                         new
                         {
                             Id = "GDS002",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4659),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4660),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9800),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9801),
                             IsDeleted = false,
                             Name = "Design Basic"
                         },
                         new
                         {
                             Id = "GDS003",
-                            DateCreated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4662),
-                            DateUpdated = new DateTime(2021, 10, 27, 23, 6, 18, 759, DateTimeKind.Local).AddTicks(4663),
+                            DateCreated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9803),
+                            DateUpdated = new DateTime(2021, 10, 28, 9, 41, 42, 390, DateTimeKind.Local).AddTicks(9804),
                             IsDeleted = false,
                             Name = "Design Advance"
                         });
@@ -1120,6 +1120,162 @@ namespace Data.Migrations
                     b.HasIndex("SubjectId");
 
                     b.ToTable("SubjectMentors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4800-962e-a317ab219379"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219379"),
+                            Name = "Java OOP",
+                            SubjectId = "PRJ001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4801-962e-a317ab219380"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219380"),
+                            Name = "English 1",
+                            SubjectId = "ENG001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4802-962e-a317ab219381"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219381"),
+                            Name = "Java Desktop",
+                            SubjectId = "PRJ002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4803-962e-a317ab219382"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219382"),
+                            Name = "English 2",
+                            SubjectId = "ENG002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4804-962e-a317ab219383"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219383"),
+                            Name = "Java Web",
+                            SubjectId = "PRJ003"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4805-962e-a317ab219384"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219384"),
+                            Name = "Japanese 1",
+                            SubjectId = "JPN001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4806-962e-a317ab219385"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219385"),
+                            Name = "Java OOP",
+                            SubjectId = "PRJ001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4807-962e-a317ab219386"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219386"),
+                            Name = "Japanese 2",
+                            SubjectId = "JPN002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4808-962e-a317ab219387"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219387"),
+                            Name = "English 3",
+                            SubjectId = "ENG003"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4809-962e-a317ab219388"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219388"),
+                            Name = "Japanese 3",
+                            SubjectId = "JPN003"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4810-962e-a317ab219389"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219389"),
+                            Name = "Chinese 1",
+                            SubjectId = "CNN001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4811-962e-a317ab219390"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219390"),
+                            Name = "English 1",
+                            SubjectId = "ENG001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4812-962e-a317ab219391"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219391"),
+                            Name = "Japanese 1",
+                            SubjectId = "JPN001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4813-962e-a317ab219392"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219392"),
+                            Name = "Chinese 2",
+                            SubjectId = "CNN002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4814-962e-a317ab219393"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219393"),
+                            Name = "History of Graphic Design",
+                            SubjectId = "GDS001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4815-962e-a317ab219394"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219394"),
+                            Name = "English 2",
+                            SubjectId = "ENG002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4816-962e-a317ab219395"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219395"),
+                            Name = "Design Basic",
+                            SubjectId = "GDS002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4817-962e-a317ab219396"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219396"),
+                            Name = "English 3",
+                            SubjectId = "ENG003"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4818-962e-a317ab219397"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219397"),
+                            Name = "English 1",
+                            SubjectId = "ENG001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4819-962e-a317ab219398"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219398"),
+                            Name = "Marketing 1",
+                            SubjectId = "MKT001"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4820-962e-a317ab219399"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219399"),
+                            Name = "English 2",
+                            SubjectId = "ENG002"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f0c7479-25cd-4821-962e-a317ab219400"),
+                            MentorId = new Guid("3f0c7479-25cd-4863-962e-a317ab219400"),
+                            Name = "Marketing 2",
+                            SubjectId = "MKT002"
+                        });
                 });
 
             modelBuilder.Entity("Data.Entities.Transaction", b =>
@@ -1253,7 +1409,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "370adc20-33ac-4394-ae9f-03df5b9d93b7",
+                            ConcurrencyStamp = "6c0e9948-3972-4892-9898-5e759f377e82",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp1",
                             IsDisable = false,
@@ -1262,7 +1418,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp1",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e72c9f6c-18a1-4758-bcac-a5efb35cfa96",
+                            SecurityStamp = "37e0073f-37d6-4510-9f8f-3834dbd90c08",
                             TwoFactorEnabled = false,
                             UserName = "emp1"
                         },
@@ -1272,7 +1428,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "97ae136f-db23-40ec-8401-94f3ba843984",
+                            ConcurrencyStamp = "771f9ee4-9829-486d-872d-d4f5bd834032",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp2",
                             IsDisable = false,
@@ -1281,7 +1437,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp2",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8602e840-3683-4097-8b6f-01aa8e743057",
+                            SecurityStamp = "1ecf8520-a21d-45b3-a952-a164e6d3f133",
                             TwoFactorEnabled = false,
                             UserName = "emp2"
                         },
@@ -1291,7 +1447,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "6ed844a8-c52e-4b8f-9b92-10890b9fc494",
+                            ConcurrencyStamp = "409a6079-f93e-4d86-bf8e-2f0562797dbb",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp3",
                             IsDisable = false,
@@ -1300,7 +1456,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp3",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "416a0655-af21-4da0-89d6-21908e4fbfba",
+                            SecurityStamp = "26f4d385-be73-4bc5-aef1-cdc3ca7674df",
                             TwoFactorEnabled = false,
                             UserName = "emp3"
                         },
@@ -1310,7 +1466,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "5821311f-e870-4c96-84e7-daa9504c109d",
+                            ConcurrencyStamp = "f08c6418-1d64-48ae-8a87-fd47bed34929",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp4",
                             IsDisable = false,
@@ -1319,7 +1475,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp4",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b86f0d0f-9bd3-4992-9d42-0f298b574459",
+                            SecurityStamp = "9b3085e7-22f3-42e1-8b17-9f9a855f8e51",
                             TwoFactorEnabled = false,
                             UserName = "emp4"
                         },
@@ -1329,7 +1485,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "2d84d799-c5f3-4478-9e25-9098898b9dea",
+                            ConcurrencyStamp = "1a774a46-b14d-4d34-a9f8-54fb5bde16fb",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp5",
                             IsDisable = false,
@@ -1338,7 +1494,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp5",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6b03e96d-872b-40f4-9a73-d08d292e3ad4",
+                            SecurityStamp = "c6ef75a6-d74a-4d4b-a457-7a705f3b9d01",
                             TwoFactorEnabled = false,
                             UserName = "emp5"
                         },
@@ -1348,7 +1504,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "74e04604-9166-4d2d-a267-5289a2970670",
+                            ConcurrencyStamp = "55be1223-2a4a-4eb7-a759-1c90e04f30b5",
                             EmailConfirmed = false,
                             Fullname = "Mr. Loc",
                             IsDisable = false,
@@ -1357,7 +1513,7 @@ namespace Data.Migrations
                             NormalizedUserName = "loc",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7da1c7d5-bd37-47e6-93f9-086bce02cb5d",
+                            SecurityStamp = "23153b3a-7b93-434b-a919-75f49458ede2",
                             TwoFactorEnabled = false,
                             UserName = "loc"
                         },
@@ -1367,7 +1523,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "7c7e6fc2-14d2-474e-9cda-664e1e22d43d",
+                            ConcurrencyStamp = "55a56b22-30da-4618-a740-e10dbfe54729",
                             EmailConfirmed = false,
                             Fullname = "Mr. Tam",
                             IsDisable = false,
@@ -1376,7 +1532,7 @@ namespace Data.Migrations
                             NormalizedUserName = "tam",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1215536c-4dda-4330-ac68-e3158d8bc9dc",
+                            SecurityStamp = "72143818-2531-4075-9263-c29ac679f989",
                             TwoFactorEnabled = false,
                             UserName = "tam"
                         },
@@ -1386,7 +1542,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "fcd0fcdd-c399-40a3-a488-d219e9fcbdb2",
+                            ConcurrencyStamp = "e75531bc-e93d-4d8c-b5f7-d6db1535ed92",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp6",
                             IsDisable = false,
@@ -1395,7 +1551,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp6",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2790e526-e171-4637-ac3d-7517d9a25937",
+                            SecurityStamp = "5f6adeb9-69e3-43df-871a-df894cb36cf9",
                             TwoFactorEnabled = false,
                             UserName = "emp6"
                         },
@@ -1405,7 +1561,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "ce3229ad-4323-4ace-8382-060209471382",
+                            ConcurrencyStamp = "03bc568b-3f36-46a0-8916-3616865dc216",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp7",
                             IsDisable = false,
@@ -1414,7 +1570,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp7",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "95782c0a-0b69-47eb-9642-fe570c6a3978",
+                            SecurityStamp = "30c15a14-0c69-490c-9803-7a7abea1b177",
                             TwoFactorEnabled = false,
                             UserName = "emp7"
                         },
@@ -1424,7 +1580,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "4459c637-4a5c-4c2b-843d-2216a1da8809",
+                            ConcurrencyStamp = "0043b57b-e1e3-43c2-8c1d-b3ee62aa39a4",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp8",
                             IsDisable = false,
@@ -1433,7 +1589,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp8",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "64be416d-a7f3-4849-add4-d6127e14d873",
+                            SecurityStamp = "5136e5cc-7deb-443e-ba8e-a83ccd330066",
                             TwoFactorEnabled = false,
                             UserName = "emp8"
                         },
@@ -1443,7 +1599,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "b09ba3bd-4fb1-4201-bf9d-dc88bbba482d",
+                            ConcurrencyStamp = "ad7d870e-3838-46a1-9a62-f81fd19b734e",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp9",
                             IsDisable = false,
@@ -1452,7 +1608,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp9",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e8df0939-5e82-4dbe-82f4-73d3967886a4",
+                            SecurityStamp = "e30d7af4-551c-4f27-99e1-7c3698a5d1e8",
                             TwoFactorEnabled = false,
                             UserName = "emp9"
                         },
@@ -1462,7 +1618,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "0c4b8993-2d1f-4e3f-aded-317666e8d750",
+                            ConcurrencyStamp = "88673459-e371-42ae-ac2e-12cd24fd4850",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp10",
                             IsDisable = false,
@@ -1471,7 +1627,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp10",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8d2386c6-4bde-4822-8e03-1aad0d2fe43b",
+                            SecurityStamp = "4622bfb9-40ad-42c2-9604-fbbbb59c4917",
                             TwoFactorEnabled = false,
                             UserName = "emp10"
                         },
@@ -1481,7 +1637,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "8357e033-7b75-4e5a-a776-437d2a66d6c7",
+                            ConcurrencyStamp = "422701cd-3347-4b53-a62a-17759a9bc5e5",
                             EmailConfirmed = false,
                             Fullname = "Mr. Loc1",
                             IsDisable = false,
@@ -1490,7 +1646,7 @@ namespace Data.Migrations
                             NormalizedUserName = "loc1",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8b8d0885-370c-4340-99e0-831e55520577",
+                            SecurityStamp = "7e7ab28c-fb3c-4b00-ae04-128692f01127",
                             TwoFactorEnabled = false,
                             UserName = "loc1"
                         },
@@ -1500,7 +1656,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "0c7a284c-f236-4771-a13c-d993b80c388a",
+                            ConcurrencyStamp = "0eb3b26b-0686-47ac-8a1e-b1958b12d4e1",
                             EmailConfirmed = false,
                             Fullname = "Mr. Tam1",
                             IsDisable = false,
@@ -1509,7 +1665,7 @@ namespace Data.Migrations
                             NormalizedUserName = "tam1",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5f7b1e5d-99b7-4f0a-bd3e-8b2ed85420d7",
+                            SecurityStamp = "767537f4-8603-42dc-ba3c-1b28c2ef0149",
                             TwoFactorEnabled = false,
                             UserName = "tam1"
                         },
@@ -1519,7 +1675,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "9e78b50b-054f-4217-a203-6a3c3fa37c20",
+                            ConcurrencyStamp = "bb6bff6a-31df-4846-9894-7d85bd55028c",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp11",
                             IsDisable = false,
@@ -1528,7 +1684,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp11",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "729259ba-ac67-45a3-b590-7548439b7962",
+                            SecurityStamp = "e2e3c85a-ab81-47a8-8fd8-8f9ca49debde",
                             TwoFactorEnabled = false,
                             UserName = "emp11"
                         },
@@ -1538,7 +1694,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "f15cf7ab-b5b0-41fc-89fc-08b49f3ae32d",
+                            ConcurrencyStamp = "4067f8e9-798c-486b-a0d1-3e7484ff5484",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp12",
                             IsDisable = false,
@@ -1547,7 +1703,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp12",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "80b7a5f7-e3c3-42e6-8a33-ad4e9a524d90",
+                            SecurityStamp = "a0789922-4101-480d-9394-128712e92bf9",
                             TwoFactorEnabled = false,
                             UserName = "emp12"
                         },
@@ -1557,7 +1713,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "70270b4d-1055-4d55-9fda-67b0d424c744",
+                            ConcurrencyStamp = "73040d64-15a0-4251-9dd6-3fc874fac4af",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp13",
                             IsDisable = false,
@@ -1566,7 +1722,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp13",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6fb7f4b3-5251-4210-8bff-2faa65fc10fe",
+                            SecurityStamp = "a93ea445-8e13-4530-9ebd-1c03fcda2e07",
                             TwoFactorEnabled = false,
                             UserName = "emp13"
                         },
@@ -1576,7 +1732,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "0f941c25-c35e-4e0c-8028-7c68c5756455",
+                            ConcurrencyStamp = "c03bab15-2c84-4bda-81c4-55e156adf32d",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp14",
                             IsDisable = false,
@@ -1585,7 +1741,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp14",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "605218a5-6280-40e7-bf29-4dd9122f989b",
+                            SecurityStamp = "0cf314cd-2052-4a4a-9975-04055bcf5778",
                             TwoFactorEnabled = false,
                             UserName = "emp14"
                         },
@@ -1595,7 +1751,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "c80e24f7-0dcb-4f34-b354-27a06f28d800",
+                            ConcurrencyStamp = "472aa753-653f-467c-8abc-e56c133baf89",
                             EmailConfirmed = false,
                             Fullname = "Mr. Emp15",
                             IsDisable = false,
@@ -1604,7 +1760,7 @@ namespace Data.Migrations
                             NormalizedUserName = "emp15",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f39f263-0d06-4b01-bc18-5fdd8cc2d321",
+                            SecurityStamp = "7e76ae8e-f6b0-41ff-8ebc-72d5ba0c841c",
                             TwoFactorEnabled = false,
                             UserName = "emp15"
                         },
@@ -1614,7 +1770,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "3b0b188a-6aa8-415b-a5ea-7dc2f8e653cd",
+                            ConcurrencyStamp = "22627616-56e6-4b28-ba8d-8d39b8a0c655",
                             EmailConfirmed = false,
                             Fullname = "Mr. Loc2",
                             IsDisable = false,
@@ -1623,7 +1779,7 @@ namespace Data.Migrations
                             NormalizedUserName = "loc2",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "24a52112-8109-4ecb-a540-e2e4bee3fe88",
+                            SecurityStamp = "ce7a000e-0496-405e-886a-2c0bd4103c39",
                             TwoFactorEnabled = false,
                             UserName = "loc2"
                         },
@@ -1633,7 +1789,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "7414204d-4cf6-4739-ba68-0ea7f4bcc664",
+                            ConcurrencyStamp = "fc4d1fb3-390d-4c0d-9ec9-78075bf18ebd",
                             EmailConfirmed = false,
                             Fullname = "Mr. Tam2",
                             IsDisable = false,
@@ -1642,7 +1798,7 @@ namespace Data.Migrations
                             NormalizedUserName = "tam2",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f7470b15-509b-48b0-81d1-90bc7ffbebfa",
+                            SecurityStamp = "0b8af151-5e57-474a-961e-7dfcd652af36",
                             TwoFactorEnabled = false,
                             UserName = "tam2"
                         },
@@ -1652,7 +1808,7 @@ namespace Data.Migrations
                             AccessFailedCount = 0,
                             Balance = 0.0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "980649f3-b44d-44fd-ad5a-d188fc949368",
+                            ConcurrencyStamp = "865ab79a-edc8-4d0a-a0a9-3da734807cf0",
                             EmailConfirmed = false,
                             Fullname = "Admin Ne`",
                             IsDisable = false,
@@ -1661,7 +1817,7 @@ namespace Data.Migrations
                             NormalizedUserName = "admin",
                             PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6ac8bcff-4753-4f62-8bd2-9eeda2eb239c",
+                            SecurityStamp = "a3c402b3-6ee8-4966-9240-8d655058c636",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
