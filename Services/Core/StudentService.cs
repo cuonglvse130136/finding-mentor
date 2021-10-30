@@ -15,7 +15,7 @@ namespace Services.Core
         ResultModel Get(Guid? id);
         ResultModel Create(StudentAddModel model);
         ResultModel Update(Guid id, StudentUpdateModel model);
-        ResultModel UpdateMajor(Guid id, string majorid);
+        ResultModel UpdateMajor(string id, string majorid);
         ResultModel Delete(Guid id);
     }
     public class StudentService : IStudentService
@@ -94,12 +94,12 @@ namespace Services.Core
             return result;
         }
 
-        public ResultModel UpdateMajor (Guid id, string majorid)
+        public ResultModel UpdateMajor (string id, string majorid)
         {
             var result = new ResultModel();
             try
             {
-                var student = _dbContext.Students.FirstOrDefault(s => s.Id == id);
+                var student = _dbContext.Students.FirstOrDefault(s => s.UserId == id);
 
                 if (student == null)
                 {

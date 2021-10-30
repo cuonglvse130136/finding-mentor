@@ -30,7 +30,7 @@ namespace SafeAndClean.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
-        [HttpPost("AdminAuth")]
+        [HttpPost("Login")]
         public async Task<IActionResult> LoginAdmin (AdminLoginModel model)
         {
             var result = await _accountService.LoginAdmin(model);

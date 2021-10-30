@@ -3,6 +3,7 @@ using Data.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SafeAndClean.Extensions;
 using Services.Core;
 using System;
 using System.Collections.Generic;
@@ -52,11 +53,11 @@ namespace SWP391_FindStudentApp.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
-        [HttpPut("Major{id}/{majorid}")]
+        [HttpPut("Major/{majorid}")]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
-        public IActionResult UpdateMajor(Guid id, string majorid)
+        public IActionResult UpdateMajor(string majorid)
         {
-            var result = _StudentService.UpdateMajor(id, majorid);
+            var result = _StudentService.UpdateMajor(User.GetId(), majorid);
 
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
