@@ -1,4 +1,5 @@
-﻿using Data.ViewModels;
+﻿using Data.StaticData;
+using Data.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +43,7 @@ namespace SWP391_FindMentorApp.Controllers
         [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult RecommendMentor()
         {
-            var result = _courseService.RecommendCourse(User.GetId());
+            var result = _courseService.RecommendCourse(User.GetId(), ConstUserRoles.STUDENT);
 
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
