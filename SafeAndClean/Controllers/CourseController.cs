@@ -1,10 +1,13 @@
 ﻿using Data.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SafeAndClean.Extensions;
 using Services.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SWP391_FindMentorApp.Controllers
@@ -28,12 +31,21 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
-        [HttpGet("{name}")]
+        [HttpGet("Name/{name}")]
         public IActionResult Filter(string name)
         {
             var rs = _courseService.Search(name);
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
+        }
+        [HttpGet("RecommendCourse")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public IActionResult RecommendMentor()
+        {
+            var result = _courseService.RecommendCourse(User.GetId());
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
         }
 
         [HttpPost]

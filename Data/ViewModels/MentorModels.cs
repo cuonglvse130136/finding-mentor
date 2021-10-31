@@ -22,12 +22,10 @@ namespace Data.ViewModels
     public class MentorDataModel
     {
         public int Rating { get; set; }
-
         public bool IsGraduted { get; set; }
-
         public string About { get; set; }
-
         public string Company { get; set; }
+        public string AvatarUrl { get; set; }
 
         public List<SubjectViewModel1> SubjectViewModels { get; set; } = new List<SubjectViewModel1>();
 

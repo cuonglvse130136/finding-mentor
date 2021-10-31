@@ -15,16 +15,15 @@ namespace Data.Entities
         public virtual ICollection<Course> Courses { get; set; }
 
         public int Rating { get; set; }
-
         public bool IsGraduted { get; set; }
-
         public string About { get; set; }
-
         public string Company { get; set; }
+        public string AvatarUrl { get; set; }
 
         public string MajorId { get; set; }
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
+
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]

@@ -2,6 +2,7 @@
 using Data.DbContext;
 using Data.Entities;
 using Data.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Services.Core
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
         ResultModel Search(string name);
+        ResultModel RecommendCourse(string userId);
     }
 
     public class CourseService : ICourseService
@@ -36,6 +38,7 @@ namespace Services.Core
             {
                 var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).ToList();
 
+                
                 result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
                 result.Success = true;
             }
@@ -70,6 +73,28 @@ namespace Services.Core
             try
             {
                 var courses = _dbContext.Courses.Where(x=>x.Name.Contains(name)).ToList();
+
+                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+        public ResultModel RecommendCourse(string userId)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var majorId = _dbContext.Users.FirstOrDefault(s => s.Id == userId).MajorId;
+
+
+                //var courses = _dbContext.Courses.Include(m => m.User).Where(s => s.MajorId == users.MajorId).OrderByDescending(s => s.Rating).Take(5).ToList();
+
+                var courses = _dbContext.Courses.Where(c => c.MajorId == majorId).OrderByDescending(c => c.Rating).Take(5).ToList();
+
 
                 result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
                 result.Success = true;
