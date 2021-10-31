@@ -6,12 +6,16 @@ namespace Data.ViewModels
 {
     public class MentorAddModel
     {
-        public string Fullname { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Address { get; set; }
-        public string Gender { get; set; }
-        public int Status { get; set; }
+
+        
+        public string UserId { get; set; }
+        public bool IsGraduted { get; set; }
+        public string About { get; set; }
+        public string Company { get; set; }
+        public string AvatarUrl { get; set; }
         public string MajorId { get; set; }
+        public List<string> SubjectIds { get; set; }
+
     }
 
     public class MentorViewModel: UserViewModels

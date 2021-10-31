@@ -1,18 +1,21 @@
 ﻿using AutoMapper;
 using Data.DbContext;
 using Data.Entities;
+using Data.StaticData;
 using Data.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Services.Core
 {
     public interface IMentorService
     {
         ResultModel Get(Guid? id);
-        ResultModel Create(MentorAddModel model);
+        Task<ResultModel> Create(MentorAddModel model);
         ResultModel Update(Guid id, MentorUpdateModel model);
         ResultModel Delete(Guid id);
         ResultModel RecommendMentorByMajor(string userId);
@@ -26,11 +29,13 @@ namespace Services.Core
     {
         private readonly IMapper _mapper;
         private readonly AppDbContext _dbContext;
+        private readonly UserManager<User> _userManager;
 
-        public MentorService(IMapper mapper, AppDbContext dbContext)
+        public MentorService(IMapper mapper, AppDbContext dbContext, UserManager<User> userManager)
         {
             _mapper = mapper;
             _dbContext = dbContext;
+            _userManager = userManager;
         }
 
         public ResultModel Get(Guid? id)
@@ -166,7 +171,7 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel Create(MentorAddModel model)
+        public async Task<ResultModel> Create(MentorAddModel model)
         {
             var result = new ResultModel();
             try
@@ -174,6 +179,25 @@ namespace Services.Core
                 var mentor = _mapper.Map<MentorAddModel, Mentor>(model);
 
                 _dbContext.Add(mentor);
+
+                var user = _dbContext.Users.FirstOrDefault(s => s.Id == model.UserId);
+                user.IsEnabledMentor = true;
+                _dbContext.Update(user);
+
+                foreach (var subjectId in model.SubjectIds)
+                {
+                    var subjectMentor = new SubjectMentor()
+                    {
+                        SubjectId = subjectId,
+                        MentorId = mentor.Id
+                    };
+                    _dbContext.Add(subjectMentor);
+                }
+
+
+
+                _dbContext.SaveChanges();
+                await _userManager.AddToRoleAsync(user, ConstUserRoles.MENTOR);
                 _dbContext.SaveChanges();
 
                 result.Data = mentor.Id;

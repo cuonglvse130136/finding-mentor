@@ -40,10 +40,10 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(rs.ErrorMessage);
         }
         [HttpGet("RecommendCourse")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(AuthenticationSchemes = "Bearer"  ,Roles = ConstUserRoles.STUDENT)]
         public IActionResult RecommendMentor()
         {
-            var result = _courseService.RecommendCourse(User.GetId(), ConstUserRoles.STUDENT);
+            var result = _courseService.RecommendCourse(User.GetId());
 
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);

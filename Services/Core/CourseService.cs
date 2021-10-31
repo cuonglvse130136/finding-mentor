@@ -17,7 +17,7 @@ namespace Services.Core
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
         ResultModel Search(string name);
-        ResultModel RecommendCourse(string userId, string role);
+        ResultModel RecommendCourse(string userId);
     }
 
     public class CourseService : ICourseService
@@ -83,7 +83,7 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel RecommendCourse(string userId, string role)
+        public ResultModel RecommendCourse(string userId)
         {
             var result = new ResultModel();
             try

@@ -13,9 +13,13 @@ namespace Data.ViewModels
 
     public class LoginSuccessModel
     {
-        public string Role { get; set; }
         public string Fullname { get; set; }
         public object Token { get; set; }
+        public List<string> Roles { get; set; }
+
+        public string UserId { get; set; }
+
+         
     }
 
     public class UserRegisterModel

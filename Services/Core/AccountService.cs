@@ -59,16 +59,20 @@ namespace Services.Core
 
         }
 
-        public object GenerateJwtToken(IdentityUser user, string role)
+        public object GenerateJwtToken(IdentityUser user, List<string> roles)
         {
             var claims = new List<Claim>
             {
                 //new Claim(JwtRegisteredClaimNames.Email, email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Role, role),
+                
                 //new Claim(ClaimTypes.GivenName, fullname)
             };
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSecretKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -102,12 +106,13 @@ namespace Services.Core
                 {
                     var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == uid);
                     var rolesUser = await _userManager.GetRolesAsync(appUser);
-                    var token = GenerateJwtToken(appUser, rolesUser[0]);
+                    var token = GenerateJwtToken(appUser, rolesUser.ToList());
                     LoginSuccessModel successModel = new LoginSuccessModel()
                     {
                         Fullname = appUser.Fullname,
-                        Role = rolesUser[0],
-                        Token = token
+                        Roles = rolesUser.ToList(),
+                        Token = token,
+                        UserId = appUser.Id
                     };
                     result.Data = successModel;
                     result.Success = true;
@@ -152,12 +157,13 @@ namespace Services.Core
 
                     var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == uid);
                     var rolesUser = await _userManager.GetRolesAsync(appUser);
-                    var token = GenerateJwtToken(appUser, rolesUser[0]);
+                    var token = GenerateJwtToken(appUser, rolesUser.ToList());
                     LoginSuccessModel successModel = new LoginSuccessModel()
                     {
                         Fullname = appUser.Fullname,
-                        Role = rolesUser[0],
-                        Token = token
+                        Roles = rolesUser.ToList(),
+                        Token = token,
+                        UserId = appUser.Id
                     };
 
                     result.Data = successModel;
@@ -256,12 +262,13 @@ namespace Services.Core
                 {
                     var appUser = _userManager.Users.FirstOrDefault(u => u.UserName == model.Username);
                     var rolesUser = await _userManager.GetRolesAsync(appUser);
-                    var token = GenerateJwtToken(appUser, rolesUser[0]);
+                    var token = GenerateJwtToken(appUser, rolesUser.ToList());
                     LoginSuccessModel successModel = new LoginSuccessModel()
                     {
                         Fullname = appUser.Fullname,
-                        Role = rolesUser[0],
-                        Token = token
+                        Roles = rolesUser.ToList(),
+                        Token = token,
+                        UserId = appUser.Id
                     };
                     result.Data = successModel;
                     result.Success = true;
