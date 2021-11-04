@@ -160,9 +160,13 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
-                var mentors = _dbContext.Mentors.Include(m => m.User).Where(x => x.User.Fullname.Contains(name)).ToList();
+                //var mentors = _dbContext.Mentors.Include(m => m.User).Where(x => x.User.Fullname.Contains(name)).ToList();
 
-                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+                //result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+
+
+                var mentors = _dbContext.Users.Where(m => m.Fullname.Contains(name) && m.IsEnabledMentor == true).ToList();
+                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors);
                 result.Success = true;
             }
             catch (Exception e)
