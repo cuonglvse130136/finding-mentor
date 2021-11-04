@@ -213,7 +213,7 @@ namespace Services.Core
                     }
                     if (role.Equals(ConstUserRoles.MENTOR))
                     {
-                        Mentor mentor = new Mentor() { UserId = user.Id , MajorId = user.MajorId, Rating = 0};
+                        Mentor mentor = new Mentor() { UserId = user.Id , Rating = 0};
                         _appDbContext.Add(mentor);
                         _appDbContext.SaveChanges();
                     }
@@ -232,23 +232,6 @@ namespace Services.Core
             {
                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
             }
-            return result;
-        }
-
-        public async Task<ResultModel> SignInWithGoogle(UserRegisterModel model, string role)
-        {
-
-            var result = new ResultModel();
-
-            try
-            {
-                var idToken = "";
-
-                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
-
-            }
-            catch { }
-
             return result;
         }
 

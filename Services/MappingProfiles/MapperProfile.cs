@@ -47,7 +47,7 @@ namespace Services.MappingProfiles
                 .ReverseMap();
             CreateMap<Mentor, MentorDataModel>()
                   .ForMember(m => m.SubjectViewModels, map => map.Ignore())
-                .ForMember(m => m.MajorViewModel, map => map.MapFrom(m1 => m1.Major))
+                .ForMember(m => m.MajorViewModel, map => map.MapFrom(m1 => m1.AvailableMajors))
                  .ReverseMap();
 
 

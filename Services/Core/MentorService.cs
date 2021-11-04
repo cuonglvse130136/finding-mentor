@@ -75,7 +75,7 @@ namespace Services.Core
                 var mentors = _dbContext.Mentors
                     .Include(m => m.User)
                     .Include(m => m.SubjectMentors)
-                    .Include(m => m.Major)
+                    .Include(m => m.AvailableMajors)
                     .Where(s => s.UserId == id)
                     .ToList();
 
@@ -107,7 +107,9 @@ namespace Services.Core
             {
                 var users = _dbContext.Users.FirstOrDefault(s => s.Id == userId);
 
-                var mentors = _dbContext.Mentors.Include(m => m.User).Where(s => s.MajorId == users.MajorId).OrderByDescending(s => s.Rating).Take(5).ToList();
+                var mentors = _dbContext.Mentors.Include(m => m.User)
+                                                .Where(s => s.AvailableMajors.Any(am => am.MajorId == users.MajorId))
+                                                .OrderByDescending(s => s.Rating).Take(5).ToList();
 
 
                 result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
