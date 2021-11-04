@@ -20,11 +20,6 @@ namespace Data.Entities
         public string Company { get; set; }
         public string AvatarUrl { get; set; }
 
-        public string MajorId { get; set; }
-        [ForeignKey("MajorId")]
-        public virtual Major Major { get; set; }
-
-
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
