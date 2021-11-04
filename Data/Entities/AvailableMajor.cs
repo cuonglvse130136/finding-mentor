@@ -13,7 +13,7 @@ namespace Data.Entities
         [Key, ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
-        public string MentorId { get; set; }
+        public Guid MentorId { get; set; }
         [Key, ForeignKey("MentorId")]
         public virtual Mentor Mentor { get; set; }
     }

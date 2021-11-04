@@ -24,6 +24,8 @@ namespace Data.Entities
         public bool IsEnabledMentor { get; set; }
         public bool IsDisable { get; set; }
 
+        public Mentor Mentor { get; set; }
+
         public static ClaimsIdentity Identity { get; internal set; }
 
     }
