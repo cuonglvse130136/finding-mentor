@@ -30,6 +30,7 @@ namespace Data.Entities
         public virtual User User { get; set; }
 
         public virtual ICollection<SubjectMentor> SubjectMentors { get; set; } = new HashSet<SubjectMentor>();
+        public virtual ICollection<AvailableMajor> AvailableMajors { get; set; } = new HashSet<AvailableMajor>();
 
     }
 }

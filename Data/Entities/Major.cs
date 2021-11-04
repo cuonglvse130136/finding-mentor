@@ -21,5 +21,7 @@ namespace Data.Entities
         public virtual ICollection<SubjectMajor> SubjectMajors { get; set; }
 
         public virtual ICollection<Mentor> Mentors { get; set; }
+
+        public virtual ICollection<AvailableMajor> AvailableMajors { get; set; } = new HashSet<AvailableMajor>();
     }
 }
