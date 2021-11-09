@@ -15,7 +15,7 @@ namespace Data.Entities
         public DateTime StartDate { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
-        
+        public string Duration { get; set; }
 
 
 

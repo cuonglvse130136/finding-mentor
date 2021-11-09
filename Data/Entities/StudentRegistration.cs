@@ -9,6 +9,7 @@ namespace Data.Entities
     [Table("StudentRegistration")]
     public class StudentRegistration : BaseEntity
     {
+
         public Guid StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Student Student { get; set; }

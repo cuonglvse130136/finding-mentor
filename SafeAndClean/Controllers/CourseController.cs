@@ -32,6 +32,15 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
+
+        [HttpGet("courseOfMentor")]
+        public IActionResult GetCourseOfMentor()
+        {
+            var rs = _courseService.getCourseofMentor(User.GetId());
+
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
         [HttpGet("Name/{name}")]
         public IActionResult Filter(string name)
         {
@@ -52,7 +61,7 @@ namespace SWP391_FindMentorApp.Controllers
         [HttpPost]
         public IActionResult Add([FromBody] CourseAddModels model)
         {
-            var rs = _courseService.Add(model);
+            var rs = _courseService.Add(model, User.GetId());
 
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);

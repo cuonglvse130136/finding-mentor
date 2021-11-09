@@ -25,6 +25,7 @@ namespace Data.ViewModels
         public double Balance { get; set; }
         public bool IsDisable { get; set; }
     }
+    
     public class StudentUpdateModel
     {
         public string Fullname { get; set; }

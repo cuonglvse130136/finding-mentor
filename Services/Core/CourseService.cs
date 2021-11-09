@@ -13,7 +13,8 @@ namespace Services.Core
     public interface ICourseService
     {
         ResultModel Get(Guid? id);
-        ResultModel Add(CourseAddModels model);
+        ResultModel getCourseofMentor(string userId);
+        ResultModel Add(CourseAddModels model, string userId);
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
         ResultModel Search(string name);
@@ -30,7 +31,6 @@ namespace Services.Core
             _dbContext = dbContext;
             _mapper = mapper;
         }
-
         public ResultModel Get(Guid? id)
         {
             var result = new ResultModel();
@@ -38,7 +38,7 @@ namespace Services.Core
             {
                 var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).ToList();
 
-                
+
                 result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
                 result.Success = true;
             }
@@ -48,17 +48,37 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel Add(CourseAddModels model)
+        public ResultModel getCourseofMentor(string userId)
         {
             var result = new ResultModel();
             try
             {
-                var major = _mapper.Map<CourseAddModels, Course>(model);
+                var mentorId = _dbContext.Mentors.FirstOrDefault(m => m.UserId == userId).Id;
+                var course = _dbContext.Courses.Where(s => s.MentorId == mentorId && s.IsDeleted == false).ToList();
 
-                _dbContext.Add(major);
+
+                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+        public ResultModel Add(CourseAddModels model , string userId)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var mentorId = _dbContext.Mentors.FirstOrDefault(m => m.UserId == userId).Id;
+                var course = _mapper.Map<CourseAddModels, Course>(model);
+
+                course.MentorId = mentorId;
+                _dbContext.Add(course);
                 _dbContext.SaveChanges();
 
-                result.Data = major.Id;
+                result.Data = course.Id;
                 result.Success = true;
             }
             catch (Exception e)
@@ -121,6 +141,9 @@ namespace Services.Core
                 course.Name = model.Name;
                 course.MentorId = model.MentorId;
                 course.Price = model.Price;
+                course.Duration = model.Duration;
+                course.ImageUrl = model.ImageUrl;
+                course.Description = model.Description;
                 course.SubjectId = model.SubjectId;
                 course.DateUpdated = DateTime.Now;
 
