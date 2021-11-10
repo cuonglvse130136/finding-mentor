@@ -77,18 +77,28 @@ namespace Services.Core
                     .Include(m => m.SubjectMentors)
                     .Include(m => m.AvailableMajors)
                     .Where(s => s.UserId == id)
-                    .ToList();
+                    .FirstOrDefault();
+                var subjects = _dbContext.Subjects.Where(s => mentors.SubjectMentors.Select(s => s.SubjectId).Contains(s.Id)).ToList();
+                var majors = _dbContext.Majors.Where(m => mentors.AvailableMajors.Select(m => m.MajorId).Contains(m.Id)).ToList();
 
-                for (int i = 0; i < mentors.Count; i++)
-                {
-                    var subjects = _dbContext.Subjects.Where(s => mentors[i].SubjectMentors.Select(s => s.SubjectId).Contains(s.Id)).ToList();
 
-                    MentorDataModel mentor = _mapper.Map<Mentor, MentorDataModel>(mentors[i]);
+                MentorDataModel mentor = _mapper.Map<Mentor, MentorDataModel>(mentors);
+                //  MentorDataModel mentor1 = new MentorDataModel()
+                //  {
+                //      About = mentors.About,
+                //      AvatarUrl = mentors.AvatarUrl,
+                //      Company = mentors.Company,
+                //      IsGraduted = mentors.IsGraduted,
+                //      Rating = mentors.Rating
+                //  };
+                mentor.Subjects = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
+                mentor.Majors = _mapper.Map<List<Major>, List<MajorViewModel1>>(majors);
+                data.Mentor = mentor;
+                /* for (int i = 0; i < mentors.Count; i++)
+                 {* /
 
-                    mentor.SubjectViewModels = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
+                 /*}*/
 
-                    data.Data.Add(mentor);
-                }
 
                 result.Data = data;
                 result.Success = true;

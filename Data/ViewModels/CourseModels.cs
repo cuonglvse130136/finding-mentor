@@ -24,11 +24,15 @@ namespace Data.ViewModels
         public string Name { get; set; }
         public double Price { get; set; }
         public DateTime StartDate { get; set; }
+        public string Duration { get; set; }
+        public string ImageUrl { get; set; }
+        public string Description { get; set; }
     }
     public class CourseViewModel
     {
         public Guid Id { get; set; }
         public Guid MentorId { get; set; }
+        public string MentorName { get; set; }
         public string Name { get; set; }
         public string Duration { get; set; }
         public string ImageUrl { get; set; }

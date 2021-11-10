@@ -20,6 +20,8 @@ namespace Services.MappingProfiles
             //MAJOR MODEL
             CreateMap<MajorViewModel, Major>()
                 .ReverseMap();
+            CreateMap<Major, MajorViewModel1>()
+                .ReverseMap();
             CreateMap<MajorAddModel, Major>()
                  .ReverseMap();
             CreateMap<MajorUpdateModel, Major>()
@@ -43,11 +45,10 @@ namespace Services.MappingProfiles
             //askldj
             CreateMap<Subject, SubjectViewModel1>()
                .ReverseMap();
-            CreateMap<Major, MajorViewModel1>()
-                .ReverseMap();
+
             CreateMap<Mentor, MentorDataModel>()
-                  .ForMember(m => m.SubjectViewModels, map => map.Ignore())
-                .ForMember(m => m.MajorViewModel, map => map.MapFrom(m1 => m1.AvailableMajors))
+                 // .ForMember(m => m.Subjects, map => map.Ignore())
+               // .ForMember(m => m.Majors, map => map.MapFrom(m1 => m1.AvailableMajors))
                  .ReverseMap();
 
 

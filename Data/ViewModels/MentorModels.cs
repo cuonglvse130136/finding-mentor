@@ -20,7 +20,7 @@ namespace Data.ViewModels
 
     public class MentorViewModel: UserViewModels
     {
-        public List<MentorDataModel> Data { get; set; } = new List<MentorDataModel>();
+        public MentorDataModel Mentor { get; set; } = new MentorDataModel();
     }
 
     public class MentorDataModel
@@ -31,9 +31,9 @@ namespace Data.ViewModels
         public string Company { get; set; }
         public string AvatarUrl { get; set; }
 
-        public List<SubjectViewModel1> SubjectViewModels { get; set; } = new List<SubjectViewModel1>();
+        public List<SubjectViewModel1> Subjects { get; set; } = new List<SubjectViewModel1>();
 
-        public MajorViewModel1 MajorViewModel { get; set; }
+        public List<MajorViewModel1> Majors { get; set; } = new List<MajorViewModel1>();
     }
     
     public class MentorUpdateModel

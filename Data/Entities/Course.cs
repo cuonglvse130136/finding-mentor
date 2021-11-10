@@ -16,9 +16,6 @@ namespace Data.Entities
         public double Price { get; set; }
         public string ImageUrl { get; set; }
         public string Duration { get; set; }
-
-
-
         public Guid MentorId { get; set; }
         [ForeignKey("MentorId")]
         public virtual Mentor Mentor { get; set; }

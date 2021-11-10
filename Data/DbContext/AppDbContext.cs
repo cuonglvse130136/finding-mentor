@@ -188,7 +188,7 @@ namespace Data.DbContext
 
             #region Seed Course data
             modelBuilder.Entity<Course>().HasData(
-                new Course() { Id = Guid.Parse("1d6940a7-7035-4bc0-baa4-06174e05e336"), Name = "Course 1", SubjectId = "PRJ001", MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219379"), StartDate = DateTime.Parse("2021-10-21"), Price = 100, MajorId = "SE" },
+                new Course() { Id = Guid.Parse("1d6940a7-7035-4bc0-baa4-06174e05e336"), Name = "Course 1", SubjectId = "PRJ001", MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219379"), StartDate = DateTime.Parse("2021-10-21"), Price = 100, MajorId = "SE",Description = "ABC FCK", Duration="2 week" },
                 new Course() { Id = Guid.Parse("1d6940a7-7035-4bc0-baa4-06174e05e338"), Name = "Course 3", SubjectId = "PRJ003", MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219383"), StartDate = DateTime.Parse("2021-10-21"), Price = 100, MajorId = "SE" },
                 new Course() { Id = Guid.Parse("1d6940a7-7035-4bc0-baa4-06174e05e339"), Name = "Course 4", SubjectId = "PRF001", MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219379"), StartDate = DateTime.Parse("2021-10-21"), Price = 100, MajorId = "SE" },
                 new Course() { Id = Guid.Parse("1d6940a7-7035-4bc0-baa4-06174e05e341"), Name = "Course 6", SubjectId = "PRF003", MentorId = Guid.Parse("3f0c7479-25cd-4863-962e-a317ab219383"), StartDate = DateTime.Parse("2021-10-21"), Price = 100, MajorId = "SE" },

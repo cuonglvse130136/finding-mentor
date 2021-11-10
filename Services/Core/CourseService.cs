@@ -36,10 +36,14 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
-                var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).ToList();
+                var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).FirstOrDefault();
+                
 
+                var courseResult = _mapper.Map<Course, CourseViewModel>(course);
 
-                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                var mentorName = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User.Fullname;
+                courseResult.MentorName = mentorName;
+                result.Data = courseResult;
                 result.Success = true;
             }
             catch (Exception e)
