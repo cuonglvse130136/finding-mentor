@@ -61,8 +61,13 @@ namespace Services.Core
                 var mentorId = _dbContext.Mentors.FirstOrDefault(m => m.UserId == userId).Id;
                 var course = _dbContext.Courses.Where(s => s.MentorId == mentorId && s.IsDeleted == false).ToList();
 
+                var coursesData = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                foreach (var c in coursesData)
+                {
+                    c.MentorName = _dbContext.Mentors.Where(m => c.MentorId == m.Id).FirstOrDefault().User.Fullname;
+                }
 
-                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                result.Data = coursesData;
                 result.Success = true;
             }
             catch (Exception e)
@@ -81,8 +86,13 @@ namespace Services.Core
                
                 var course = _dbContext.Courses.Where(m => students.StudentRegistrations.Select(m => m.CourseId).Contains(m.Id) && m.IsEnroll == true).ToList();
 
-                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
-                
+                var coursesData = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                foreach (var c in coursesData)
+                {
+                    c.MentorName = _dbContext.Mentors.Where(m => c.MentorId == m.Id).FirstOrDefault().User.Fullname;
+                }
+
+                result.Data = coursesData;
                 result.Success = true;
             }
             catch (Exception e)
