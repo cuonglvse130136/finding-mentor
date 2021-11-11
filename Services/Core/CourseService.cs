@@ -19,6 +19,7 @@ namespace Services.Core
         ResultModel Delete(Guid id);
         ResultModel Search(string name);
         ResultModel RecommendCourse(string userId);
+        ResultModel GetCourseOfStudent(string userId);
     }
 
     public class CourseService : ICourseService
@@ -62,6 +63,26 @@ namespace Services.Core
 
 
                 result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+        public ResultModel GetCourseOfStudent(string userId)
+        {
+            var result = new ResultModel();
+            try
+            { 
+                var students = _dbContext.Students.Where(s => s.UserId == userId).FirstOrDefault();
+
+               
+                var course = _dbContext.Courses.Where(m => students.StudentRegistrations.Select(m => m.CourseId).Contains(m.Id) && m.IsEnroll == true).ToList();
+
+                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
+                
                 result.Success = true;
             }
             catch (Exception e)

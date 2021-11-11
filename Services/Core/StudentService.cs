@@ -45,7 +45,6 @@ namespace Services.Core
             }
             return result;
         }
-
         public ResultModel Create(StudentAddModel model)
         {
             var result = new ResultModel();

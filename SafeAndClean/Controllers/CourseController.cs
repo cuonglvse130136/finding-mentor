@@ -41,6 +41,14 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
+        [HttpGet("courseOfStudent/{id}")]
+        public IActionResult GetCourseOfStudent(string id)
+        {
+            var rs = _courseService.GetCourseOfStudent(id);
+
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
         [HttpGet("Name/{name}")]
         public IActionResult Filter(string name)
         {
