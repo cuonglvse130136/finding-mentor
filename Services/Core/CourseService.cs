@@ -118,9 +118,16 @@ namespace Services.Core
                 //var courses = _dbContext.Courses.Include(m => m.User).Where(s => s.MajorId == users.MajorId).OrderByDescending(s => s.Rating).Take(5).ToList();
 
                 var courses = _dbContext.Courses.Where(c => c.MajorId == majorId).OrderByDescending(c => c.Rating).Take(5).ToList();
+                var coursesData = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
+                foreach (var c in coursesData)
+                {
+                    c.MentorName = _dbContext.Mentors.Where(m => c.MentorId == m.Id).FirstOrDefault().User.Fullname;
+                }
 
 
-                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
+
+
+                result.Data = coursesData;
                 result.Success = true;
             }
             catch (Exception e)
