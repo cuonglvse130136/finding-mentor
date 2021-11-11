@@ -49,7 +49,7 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(rs.ErrorMessage);
         }
         [HttpGet("RecommendCourse")]
-        [Authorize(AuthenticationSchemes = "Bearer"  ,Roles = ConstUserRoles.STUDENT)]
+        [Authorize(AuthenticationSchemes = "Bearer" )]
         public IActionResult RecommendMentor()
         {
             var result = _courseService.RecommendCourse(User.GetId());
