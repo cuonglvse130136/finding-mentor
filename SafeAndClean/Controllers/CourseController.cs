@@ -33,10 +33,10 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(rs.ErrorMessage);
         }
 
-        [HttpGet("courseOfMentor")]
-        public IActionResult GetCourseOfMentor()
+        [HttpGet("courseOfMentor/{id}")]
+        public IActionResult GetCourseOfMentor(string id)
         {
-            var rs = _courseService.getCourseofMentor(User.GetId());
+            var rs = _courseService.getCourseofMentor(id);
 
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
