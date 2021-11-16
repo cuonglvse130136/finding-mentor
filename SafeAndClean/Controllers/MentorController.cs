@@ -111,5 +111,14 @@ namespace SWP391_FindMentorApp.Controllers
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
+
+        [HttpGet("Major/{mentorId}")]
+        public IActionResult GetAvalableMajor(string mentorId)
+        {
+            var rs = _MentorService.GetAvailableMajors(mentorId);
+
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
     }
 }

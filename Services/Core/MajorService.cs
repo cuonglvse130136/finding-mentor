@@ -16,6 +16,7 @@ namespace Services.Core
         ResultModel Update(string id, MajorUpdateModel model);
         ResultModel Delete(string id);
         ResultModel GetAllMajor();
+        
     }
 
     public class MajorService : IMajorService
@@ -63,6 +64,7 @@ namespace Services.Core
             }
             return result;
         }
+    
         public ResultModel Add(MajorAddModel model)
         {
             var result = new ResultModel();

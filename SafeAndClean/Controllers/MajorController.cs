@@ -37,6 +37,8 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(rs.ErrorMessage);
         }
 
+     
+
         [HttpPost]
         public IActionResult Add([FromBody] MajorAddModel model)
         {

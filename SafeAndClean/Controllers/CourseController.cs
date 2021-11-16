@@ -83,6 +83,14 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
+        [HttpPut("ImageUrl/{id}")]
+        public IActionResult Update(Guid id, [FromBody] UpdateImageUrlModel model)
+        {
+            var rs = _courseService.UpdateImageUrl(id, model);
+
+            if (rs.Success) return Ok(rs.Data);
+            return BadRequest(rs.ErrorMessage);
+        }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)

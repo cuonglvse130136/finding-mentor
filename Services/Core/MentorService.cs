@@ -25,6 +25,8 @@ namespace Services.Core
 
         ResultModel GetMentorInformation(string id);
 
+        ResultModel GetAvailableMajors(string userId);
+
     }
     public class MentorService : IMentorService
     {
@@ -132,7 +134,22 @@ namespace Services.Core
             }
             return result;
         }
+        public ResultModel GetAvailableMajors(string userId)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var major = _dbContext.Mentors.Where(m => m.UserId == userId).FirstOrDefault().AvailableMajors.Select(am => am.Major).ToList();
 
+                result.Data = _mapper.Map<List<Major>, List<MajorViewModel>>(major);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
         public ResultModel RecommendMentor()
         {
             var result = new ResultModel();

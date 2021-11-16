@@ -20,6 +20,8 @@ namespace Services.Core
         ResultModel Search(string name);
         ResultModel RecommendCourse(string userId);
         ResultModel GetCourseOfStudent(string userId);
+
+        ResultModel UpdateImageUrl(Guid id, UpdateImageUrlModel model);
     }
 
     public class CourseService : ICourseService
@@ -218,6 +220,33 @@ namespace Services.Core
                 course.IsDeleted = true;
                 //service.DateUpdated = DateTime.Now;
 
+                _dbContext.Update(course);
+                _dbContext.SaveChanges();
+
+                result.Data = course.Id;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
+        public ResultModel UpdateImageUrl(Guid id, UpdateImageUrlModel model)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var course = _dbContext.Courses.FirstOrDefault(s => s.Id == id);
+
+                if (course == null)
+                {
+                    throw new Exception("Invalid Id");
+                }
+
+                course.ImageUrl = model.ImageUrl;
+               
                 _dbContext.Update(course);
                 _dbContext.SaveChanges();
 
