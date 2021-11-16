@@ -39,6 +39,11 @@ namespace Services.MappingProfiles
                 .ReverseMap();
             CreateMap<MentorUpdateModel, Mentor>()
                 .ReverseMap();
+
+            CreateMap<Mentor, MentorUpdateModel1>()
+              .ForMember(m => m.Fullname, map => map.MapFrom(m1 => m1.User.Fullname))
+              .ForMember(m => m.Address, map => map.MapFrom(m1 => m1.User.Address))
+                .ReverseMap();
             CreateMap<User, MentorViewModel>()
                 .ReverseMap();
 

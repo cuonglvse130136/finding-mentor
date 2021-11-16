@@ -46,6 +46,20 @@ namespace Data.ViewModels
         public string MajorId { get; set; }
     }
 
+    public class MentorUpdateModel1
+    {
+        public string Fullname { get; set; }
+        public string AvatarUrl { get; set; }
+        public bool IsGraduted { get; set; }
+        public string About { get; set; }
+        public string Company { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Address { get; set; }
+        public string Gender { get; set; }
+        public string[] MajorIds { get; set; }
+        public string[] SubjectIds { get; set;}
+    }
+
     public class MentorAddRatingModel
     {
         public int Rating { get; set; }

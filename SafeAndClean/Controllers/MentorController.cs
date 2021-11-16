@@ -92,6 +92,16 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
+        [HttpPut("Profile/{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public IActionResult UpdateProflie(string id, [FromBody] MentorUpdateModel1 model)
+        {
+            var result = _MentorService.UpdateMentorProfile(id, model);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult Delete(Guid id)

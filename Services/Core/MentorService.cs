@@ -17,6 +17,7 @@ namespace Services.Core
         ResultModel Get(Guid? id);
         Task<ResultModel> Create(MentorAddModel model);
         ResultModel Update(Guid id, MentorUpdateModel model);
+        ResultModel UpdateMentorProfile(string userId, MentorUpdateModel1 model);
         ResultModel Delete(Guid id);
         ResultModel RecommendMentorByMajor(string userId);
         ResultModel Search(string name);
@@ -253,6 +254,55 @@ namespace Services.Core
             }
             return result;
         }
+
+        public ResultModel UpdateMentorProfile(string userId, MentorUpdateModel1 model)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var mentor = _dbContext.Mentors.FirstOrDefault(s => s.UserId == userId);
+
+                if (mentor == null)
+                {
+                    throw new Exception("Invalid Id");
+                }
+
+                //  mentor = _mapper.Map<MentorUpdateModel1, Mentor>(model);
+
+
+                mentor.About = model.About;
+                mentor.AvatarUrl = model.AvatarUrl;
+                mentor.Company = model.Company;
+                mentor.User.Fullname = model.Fullname;
+                mentor.User.Address = model.Address;
+                mentor.IsGraduted = model.IsGraduted;
+                var newSubjects = _dbContext.Subjects.Where(s => model.SubjectIds.Contains(s.Id)).ToList();
+                var newMajors = _dbContext.Majors.Where(s => model.MajorIds.Contains(s.Id)).ToList();
+                mentor.SubjectMentors.Clear();
+                mentor.AvailableMajors.Clear();
+                foreach (var subject in newSubjects)
+                {
+                    mentor.SubjectMentors.Add(new SubjectMentor() { SubjectId = subject.Id, MentorId = mentor.Id });
+                }
+
+                foreach (var major in newMajors)
+                {
+                    mentor.AvailableMajors.Add(new AvailableMajor() { MajorId = major.Id, MentorId = mentor.Id });
+                }
+
+                _dbContext.Mentors.Update(mentor);
+                _dbContext.SaveChanges();
+
+                result.Data = mentor.Id;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
 
         public ResultModel Delete(Guid id)
         {
