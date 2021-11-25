@@ -142,10 +142,11 @@ namespace Services.Core
                 User user = new User() { 
                     Fullname= model.Fullname,
                     Email = model.Email,
-                    Balance = 0,
+                    Balance = 1000,
                     UserName = uid,
                     IsEnabledMentor = false
                 };
+             
 
                 var createUser = await _userManager.CreateAsync(user);
 

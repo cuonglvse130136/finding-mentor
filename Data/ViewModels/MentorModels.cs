@@ -29,7 +29,6 @@ namespace Data.ViewModels
         public bool IsGraduted { get; set; }
         public string About { get; set; }
         public string Company { get; set; }
-        public string AvatarUrl { get; set; }
 
         public List<SubjectViewModel1> Subjects { get; set; } = new List<SubjectViewModel1>();
 
@@ -44,6 +43,8 @@ namespace Data.ViewModels
         public string Gender { get; set; }
         public int Status { get; set; }
         public string MajorId { get; set; }
+        public string PhoneNumber { get; set; }
+
     }
 
     public class MentorUpdateModel1
@@ -53,6 +54,8 @@ namespace Data.ViewModels
         public bool IsGraduted { get; set; }
         public string About { get; set; }
         public string Company { get; set; }
+
+        public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }
         public string Gender { get; set; }

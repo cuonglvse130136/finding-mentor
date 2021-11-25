@@ -10,5 +10,14 @@ namespace Data.ViewModels
         public string Fullname { get; set; }
         public string MajorId { get; set; }
         public DateTime StartDate { get; set; }
+
+        public string AvatarUrl { get; set; }
+    }
+
+    public class StudentRegistationModel
+    {
+        public Guid StudentId { get; set; }
+        public Guid CourseId { get; set; }
+        public DateTime StartDate { get; set; }
     }
 }

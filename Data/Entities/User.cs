@@ -16,7 +16,7 @@ namespace Data.Entities
         public string Gender { get; set; }
 
         public double Balance { get; set; }
-
+        public string AvatarUrl { get; set; }
         public string MajorId { get; set; }
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
@@ -25,6 +25,8 @@ namespace Data.Entities
         public bool IsDisable { get; set; }
 
         public virtual Mentor Mentor { get; set; }
+
+        public virtual Student Student { get; set; }
 
         public static ClaimsIdentity Identity { get; internal set; }
 

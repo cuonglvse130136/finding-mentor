@@ -17,6 +17,7 @@ namespace Services.Core
         ResultModel Update(Guid id, StudentUpdateModel model);
         ResultModel UpdateMajor(string id, string majorid);
         ResultModel Delete(Guid id);
+        ResultModel Erroll(StudentRegistationModel model);
     }
     public class StudentService : IStudentService
     {
@@ -140,6 +141,38 @@ namespace Services.Core
                 _dbContext.SaveChanges();
 
                 result.Data = student.Id;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
+
+        public ResultModel Erroll(StudentRegistationModel model)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var student = _dbContext.User.Find(model.StudentId.ToString());
+                var course = _dbContext.Courses.Find(model.CourseId);
+
+                if(student.Balance < course.Price)
+                {
+                    throw new Exception("Balance is not enough!");
+                }
+
+               // var registration = _mapper.Map<StudentRegistationModel, StudentRegistration>(model);
+                var studentRegistration = new StudentRegistration() { CourseId = course.Id, StudentId = student.Student.Id, StartDate = model.StartDate };
+                student.Balance -= course.Price;
+
+                _dbContext.Add(studentRegistration);
+                _dbContext.Update(student);
+                _dbContext.SaveChanges();
+
+                
                 result.Success = true;
             }
             catch (Exception e)

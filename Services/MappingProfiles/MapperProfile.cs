@@ -32,7 +32,9 @@ namespace Services.MappingProfiles
                 .ReverseMap();
             CreateMap<Mentor, MentorViewModel>()
                 .ForMember(m => m.Fullname, map => map.MapFrom(m1 => m1.User.Fullname))
+                .ForMember(m => m.AvatarUrl, map => map.MapFrom(m1 => m1.User.AvatarUrl))
                 .ForMember(m => m.BirthDate, map => map.MapFrom(m1 => m1.User.BirthDate))
+                .ForMember(m => m.PhoneNumber, map => map.MapFrom(m1 => m1.User.PhoneNumber))
                 .ForMember(m => m.Address, map => map.MapFrom(m1 => m1.User.Address))
                 .ForMember(m => m.Gender, map => map.MapFrom(m1 => m1.User.Gender))
                 .ForMember(m => m.IsEnabledMentor, map => map.MapFrom(m1 => m1.User.IsEnabledMentor))
@@ -42,7 +44,9 @@ namespace Services.MappingProfiles
 
             CreateMap<Mentor, MentorUpdateModel1>()
               .ForMember(m => m.Fullname, map => map.MapFrom(m1 => m1.User.Fullname))
+              .ForMember(m => m.AvatarUrl, map => map.MapFrom(m1 => m1.User.AvatarUrl))
               .ForMember(m => m.Address, map => map.MapFrom(m1 => m1.User.Address))
+              .ForMember(m => m.PhoneNumber, map => map.MapFrom(m1 => m1.User.PhoneNumber))
                 .ReverseMap();
             CreateMap<User, MentorViewModel>()
                 .ReverseMap();
@@ -53,7 +57,7 @@ namespace Services.MappingProfiles
 
             CreateMap<Mentor, MentorDataModel>()
                  // .ForMember(m => m.Subjects, map => map.Ignore())
-               // .ForMember(m => m.Majors, map => map.MapFrom(m1 => m1.AvailableMajors))
+                 // .ForMember(m => m.Majors, map => map.MapFrom(m1 => m1.AvailableMajors))
                  .ReverseMap();
 
 
@@ -70,7 +74,9 @@ namespace Services.MappingProfiles
                  .ReverseMap();
             CreateMap<CourseUpdateModels, Course>()
                 .ReverseMap();
-            CreateMap<CourseViewModel, Course>()
+            CreateMap<Course, CourseViewModel>()
+                /*   .ForMember(s => s.MentorId, map => map.MapFrom(m1 => m1.Mentor.UserId))
+                   .ForMember(s => s.MentorName, map => map.MapFrom(m1 => m1.Mentor.User.Fullname))*/
                 .ReverseMap();
             // SUBJECT MODEL
             CreateMap<SubjectAddModels, Subject>()
@@ -80,6 +86,12 @@ namespace Services.MappingProfiles
             CreateMap<SubjectViewModel, Subject>()
                 .ReverseMap();
             //.ForMember(m => m.PhoneNumber, map => map.MapFrom(m1 => m1.Phone))
+
+
+            CreateMap<StudentRegistationModel, StudentRegistration>()
+                .ForMember(s => s.StudentId, map => map.MapFrom(m1 => m1.StudentId))
+               .ReverseMap();
+
         }
     }
 }

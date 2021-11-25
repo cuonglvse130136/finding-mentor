@@ -26,7 +26,7 @@ namespace Data.Entities
         [ForeignKey("MajorId")]
         public virtual Major Major { get; set; }
 
-        public bool IsEnroll { get; set; }
+      
 
 
         public virtual ICollection<StudentRegistration> StudentRegistrations { get; set; }

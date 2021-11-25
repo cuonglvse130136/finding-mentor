@@ -40,7 +40,7 @@ namespace Data.DbContext
             #region Seed User data
             modelBuilder.Entity<User>().HasData(
                 //new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b060", UserName = "admin", NormalizedUserName = "admin", Fullname = "Administrator", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==" },
-                new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b061", UserName = "emp1", NormalizedUserName = "emp1", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Emp1", },
+                new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b061", UserName = "DjBeLLGyjwceuwuXecHNSl74XG12", NormalizedUserName = "DjBeLLGyjwceuwuXecHNSl74XG12", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Cuong Ly", },
                 new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b062", UserName = "emp2", NormalizedUserName = "emp2", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Emp2", },
                 new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b063", UserName = "emp3", NormalizedUserName = "emp3", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Emp3", },
                 new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b064", UserName = "emp4", NormalizedUserName = "emp4", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Emp4", },
@@ -62,7 +62,7 @@ namespace Data.DbContext
                 new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b078", UserName = "emp14", NormalizedUserName = "emp14", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Emp14", },
                 new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b079", UserName = "emp15", NormalizedUserName = "emp15", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Emp15", },
                 new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b080", UserName = "loc2", NormalizedUserName = "loc2", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Loc2", },
-                new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b081", UserName = "tam2", NormalizedUserName = "tam2", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Mr. Tam2", }
+                new User() { Id = "3c5ec754-01b1-49cf-94e0-09250222b081", UserName = "NDuV7ocmAIUbXMaCyMdG1pmC0yJ2", NormalizedUserName = "NDuV7ocmAIUbXMaCyMdG1pmC0yJ2", PasswordHash = "AQAAAAEAACcQAAAAEHaMifmenPio6tOMmkItEGJouVwE0OIMNql432J1dNSZDG10etUQfLlGiCvdmbA1Nw==", Fullname = "Tam Nguyen",MajorId ="SE" }
 
             );
             #endregion
@@ -207,6 +207,7 @@ namespace Data.DbContext
 
             modelBuilder.Entity<SubjectMajor>().HasKey(s => new { s.MajorId, s.SubjectId });
             modelBuilder.Entity<AvailableMajor>().HasKey(s => new { s.MajorId, s.MentorId });
+            modelBuilder.Entity<StudentRegistration>().HasKey(s => new { s.CourseId, s.StudentId });
 
             #endregion
 
@@ -247,6 +248,19 @@ namespace Data.DbContext
 
 
             );
+
+
+            #region Seed Student data
+
+            modelBuilder.Entity<Student>().HasData(
+                new Student() { Id = Guid.Parse("3c0c7479-25cd-4863-962e-a317ab219379"), UserId = "3c5ec754-01b1-49cf-94e0-09250222b066" },
+                new Student() { Id = Guid.Parse("3c0c7479-25cd-4863-962e-a317ab219382"), UserId = "3c5ec754-01b1-49cf-94e0-09250222b067" },
+                new Student() { Id = Guid.Parse("3c0c7479-25cd-4863-962e-a317ab219383"), UserId = "3c5ec754-01b1-49cf-94e0-09250222b073" },
+                new Student() { Id = Guid.Parse("3c0c7479-25cd-4863-962e-a317ab219385"), UserId = "3c5ec754-01b1-49cf-94e0-09250222b074" },
+                new Student() { Id = Guid.Parse("3c0c7479-25cd-4863-962e-a317ab219389"), UserId = "3c5ec754-01b1-49cf-94e0-09250222b080" },
+                new Student() { Id = Guid.Parse("3c0c7479-25cd-4863-962e-a317ab219392"), UserId = "3c5ec754-01b1-49cf-94e0-09250222b081" }
+            );
+            #endregion
 
 
 

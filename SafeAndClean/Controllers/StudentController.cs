@@ -72,5 +72,17 @@ namespace SWP391_FindStudentApp.Controllers
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);
         }
+
+        [HttpPost("EnrollToCourse")]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.STUDENT)]
+        public IActionResult EnrollCourse([FromBody] StudentRegistationModel model)
+        {
+            var result = _StudentService.Erroll(model);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
+
     }
 }

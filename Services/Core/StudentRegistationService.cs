@@ -12,7 +12,7 @@ namespace Services.Core
 {
     public interface IStudentRegistation
     {
-
+        ResultModel Get(Guid courseId);
     }
 
     public class StudentRegistationService : IStudentRegistation
@@ -32,7 +32,7 @@ namespace Services.Core
             {
                
                 var stu = _dbContext.StudentRegistrations.Include(s => s.Student).ThenInclude(s => s.User)
-                                                         .Where(s => s.CourseId == courseId && s.IsDeleted == false).ToList();
+                                                         .Where(s => s.CourseId == courseId).ToList();
 
                 List<StudentRegistationModels> stuReg = new List<StudentRegistationModels>();
                 if (stu != null && stu.Count > 0 )
@@ -44,7 +44,7 @@ namespace Services.Core
                             Id = s.StudentId.ToString(),
                             Fullname = s.Student.User.Fullname,
                             MajorId = s.Student.User.MajorId,
-                            StartDate = s.DateCreated
+                            StartDate = s.StartDate
                         };
                         stuReg.Add(model);
                     }

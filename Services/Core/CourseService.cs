@@ -13,7 +13,9 @@ namespace Services.Core
     public interface ICourseService
     {
         ResultModel Get(Guid? id);
-        ResultModel getCourseofMentor(string userId);
+        ResultModel GetMenteeList(Guid courseId);
+        ResultModel GetMenteeList(Guid? id);
+        ResultModel GetCourseOfMentor(string userId);
         ResultModel Add(CourseAddModels model, string userId);
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
@@ -22,6 +24,8 @@ namespace Services.Core
         ResultModel GetCourseOfStudent(string userId);
 
         ResultModel UpdateImageUrl(Guid id, UpdateImageUrlModel model);
+
+
     }
 
     public class CourseService : ICourseService
@@ -44,8 +48,9 @@ namespace Services.Core
 
                 var courseResult = _mapper.Map<Course, CourseViewModel>(course);
 
-                var mentorName = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User.Fullname;
-                courseResult.MentorName = mentorName;
+                var mentorUser = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User;
+                courseResult.MentorName = mentorUser.Fullname;
+                courseResult.MentorId = Guid.Parse(mentorUser.Id);
                 result.Data = courseResult;
                 result.Success = true;
             }
@@ -55,7 +60,29 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel getCourseofMentor(string userId)
+
+        public ResultModel GetMenteeList(Guid? id)
+        {
+            var result = new ResultModel();
+           /* try
+            {
+                var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).FirstOrDefault().StudentRegistrations;
+
+
+                var courseResult = _mapper.Map<Course, CourseViewModel>(course);
+
+                var mentorName = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User.Fullname;
+                courseResult.MentorName = mentorName;
+                result.Data = courseResult;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }*/
+            return result;
+        }
+        public ResultModel GetCourseOfMentor(string userId)
         {
             var result = new ResultModel();
             try
@@ -86,7 +113,8 @@ namespace Services.Core
                 var students = _dbContext.Students.Where(s => s.UserId == userId).FirstOrDefault();
 
                
-                var course = _dbContext.Courses.Where(m => students.StudentRegistrations.Select(m => m.CourseId).Contains(m.Id) && m.IsEnroll == true).ToList();
+                var course = _dbContext.Courses.Where(m => students.StudentRegistrations.Select(m => m.CourseId)
+                .Contains(m.Id)).ToList();
 
                 var coursesData = _mapper.Map<List<Course>, List<CourseViewModel>>(course);
                 foreach (var c in coursesData)
@@ -251,6 +279,42 @@ namespace Services.Core
                 _dbContext.SaveChanges();
 
                 result.Data = course.Id;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
+        public ResultModel GetMenteeList(Guid courseId)
+        {
+            var result = new ResultModel();
+            try
+            {
+
+                var stu = _dbContext.StudentRegistrations.Include(s => s.Student).ThenInclude(s => s.User)
+                                                         .Where(s => s.CourseId == courseId).ToList();
+
+                List<StudentRegistationModels> stuReg = new List<StudentRegistationModels>();
+                if (stu != null && stu.Count > 0)
+                {
+                    foreach (var s in stu)
+                    {
+                        StudentRegistationModels model = new StudentRegistationModels()
+                        {
+                            Id = s.Student.UserId,
+                            Fullname = s.Student.User.Fullname,
+                            MajorId = s.Student.User.MajorId,
+                            StartDate = s.StartDate,
+                            AvatarUrl = s.Student.User.AvatarUrl
+                        };
+                        stuReg.Add(model);
+                    }
+                }
+
+                result.Data = stuReg;
                 result.Success = true;
             }
             catch (Exception e)

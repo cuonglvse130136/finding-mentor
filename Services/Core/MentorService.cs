@@ -288,8 +288,10 @@ namespace Services.Core
 
 
                 mentor.About = model.About;
-                mentor.AvatarUrl = model.AvatarUrl;
+                mentor.User.AvatarUrl = model.AvatarUrl;
+                mentor.User.PhoneNumber = model.PhoneNumber;
                 mentor.Company = model.Company;
+
                 mentor.User.Fullname = model.Fullname;
                 mentor.User.Address = model.Address;
                 mentor.IsGraduted = model.IsGraduted;

@@ -18,10 +18,12 @@ namespace SWP391_FindMentorApp.Controllers
     public class CourseController : ControllerBase
     {
         private readonly ICourseService _courseService;
+     
 
         public CourseController(ICourseService courseService)
         {
             _courseService = courseService;
+          
         }
 
         [HttpGet("{id}")]
@@ -36,7 +38,7 @@ namespace SWP391_FindMentorApp.Controllers
         [HttpGet("courseOfMentor/{id}")]
         public IActionResult GetCourseOfMentor(string id)
         {
-            var rs = _courseService.getCourseofMentor(id);
+            var rs = _courseService.GetCourseOfMentor(id);
 
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
@@ -99,6 +101,17 @@ namespace SWP391_FindMentorApp.Controllers
 
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
+        }
+
+
+        [HttpGet("{id}/Mentees")]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        public IActionResult GetMenteeList(Guid id)
+        {
+            var result = _courseService.GetMenteeList(id);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
         }
     }
 }
