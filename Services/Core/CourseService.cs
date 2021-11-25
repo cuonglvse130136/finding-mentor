@@ -51,6 +51,19 @@ namespace Services.Core
                 var mentorUser = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User;
                 courseResult.MentorName = mentorUser.Fullname;
                 courseResult.MentorId = Guid.Parse(mentorUser.Id);
+
+                var s1 = mentorUser.Mentor.AvailableMajors.Select(s => s.Major);
+                var s2 = s1.Select(m => m.SubjectMajors.Select(sm => sm.SubjectId));
+
+
+                
+                var major = mentorUser.Mentor.AvailableMajors.Select(s => s.Major).Where(m => m.SubjectMajors.Select(sm => sm.SubjectId).Contains(courseResult.SubjectId));
+
+                
+                if(major.Count() != 0)
+                {
+                    courseResult.MajorId = major.First().Id;
+                }
                 result.Data = courseResult;
                 result.Success = true;
             }
