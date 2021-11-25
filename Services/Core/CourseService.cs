@@ -17,7 +17,7 @@ namespace Services.Core
         ResultModel Add(CourseAddModels model, string userId);
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
-        ResultModel Search(string name);
+        ResultModel Search(string name, string majorid, string subjectid);
         ResultModel RecommendCourse(string userId);
         ResultModel GetCourseOfStudent(string userId);
 
@@ -124,12 +124,12 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel Search(string name)
+        public ResultModel Search(string name , string majorid, string subjectid)
         {
             var result = new ResultModel();
             try
             {
-                var courses = _dbContext.Courses.Where(x=>x.Name.Contains(name)).ToList();
+                var courses = _dbContext.Courses.Where(x=>(x.Name.Contains(name)) && (string.IsNullOrEmpty(majorid) || x.MajorId == majorid) && (string.IsNullOrEmpty(subjectid) || x.SubjectId == subjectid)).ToList();
 
                 result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
                 result.Success = true;

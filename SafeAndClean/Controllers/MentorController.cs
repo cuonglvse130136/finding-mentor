@@ -64,9 +64,9 @@ namespace SWP391_FindMentorApp.Controllers
 
         [HttpGet("Search/{name}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public IActionResult Search(string name)
+        public IActionResult Search(string name, string majorid, string subjectid)
         {
-            var result = _MentorService.Search(name);
+            var result = _MentorService.Search(name,majorid,subjectid);
 
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);

@@ -185,7 +185,7 @@ namespace Services.Core
         //    }
         //    return result;
         //}
-        public ResultModel Search(string name)
+        public ResultModel Search(string name, string majorid, string subjectid)
         {
             var result = new ResultModel();
             try
@@ -195,8 +195,11 @@ namespace Services.Core
                 //result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
 
 
-                var mentors = _dbContext.Users.Where(m => m.Fullname.Contains(name) && m.IsEnabledMentor == true).ToList();
-                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors);
+                var mentors = _dbContext.Users.Where(m => m.Fullname.Contains(name) && m.IsEnabledMentor == true && (string.IsNullOrEmpty(majorid) || m.MajorId == majorid)).ToList();
+
+                var mentor1 = _dbContext.Mentors.Include(x=>x.SubjectMentors).Where(m => mentors.Select(s => s.Id).Contains(m.UserId) && (string.IsNullOrEmpty(subjectid) || m.SubjectMentors.Select(s => s.SubjectId).Contains(subjectid)));
+
+                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentor1.Select(s=>s.User).ToList());
                 result.Success = true;
             }
             catch (Exception e)
