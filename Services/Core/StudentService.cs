@@ -13,6 +13,7 @@ namespace Services.Core
     public interface IStudentService
     {
         ResultModel Get(Guid? id);
+        ResultModel Get(string userId);
         ResultModel Create(StudentAddModel model);
         ResultModel Update(Guid id, StudentUpdateModel model);
         ResultModel UpdateMajor(string id, string majorid);
@@ -38,6 +39,24 @@ namespace Services.Core
                 var students = _dbContext.Students.Where(s => id == null || (s.Id == id)).ToList();
 
                 result.Data = _mapper.Map<List<Student>, List<StudentViewModel>>(students);
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
+
+        public ResultModel Get(string userId)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var student = _dbContext.Students.Where(s=>s.UserId == userId).FirstOrDefault();
+                var data = _mapper.Map<Student, StudentViewModel>(student);
+                data.MajorId = student.User.MajorId;
+                result.Data = data;
                 result.Success = true;
             }
             catch (Exception e)

@@ -26,6 +26,8 @@ namespace Services.Core
         public Task<ResultModel> Register(UserAuthModel model, string role);
         public Task<ResultModel> LoginAdmin(AdminLoginModel model);
         public Task<ResultModel> RegisterNormal(UserRegisterModel model, string role);
+
+        public Task<ResultModel> RegisterMentor(MentorAddModel model);
     }
 
     public class AccountService : IAccountService
@@ -269,5 +271,75 @@ namespace Services.Core
             return result;
         }
 
+        public async Task<ResultModel> RegisterMentor(MentorAddModel model)
+        {
+            var result = new ResultModel();
+            try
+            {
+                var mentor = new Mentor()
+                {
+                    About = model.About,
+                    Company = model.Company,
+                    IsGraduted = model.IsGraduted,
+                    UserId = model.UserId
+                };
+
+                var newSubjects = _appDbContext.Subjects.Where(s => model.SubjectIds.Contains(s.Id)).ToList();
+                var newMajors = _appDbContext.Majors.Where(s => model.MajorIds.Contains(s.Id)).ToList();
+
+                foreach (var subject in newSubjects)
+                {
+                    mentor.SubjectMentors.Add(new SubjectMentor() { SubjectId = subject.Id, MentorId = mentor.Id });
+                }
+
+                foreach (var major in newMajors)
+                {
+                    mentor.AvailableMajors.Add(new AvailableMajor() { MajorId = major.Id, MentorId = mentor.Id });
+                }
+
+
+                _appDbContext.Add(mentor);
+
+
+                var user = _appDbContext.Users.FirstOrDefault(s => s.Id == model.UserId);
+                user.IsEnabledMentor = true;
+
+                _appDbContext.Update(user);
+
+                foreach (var subjectId in model.SubjectIds)
+                {
+                    var subjectMentor = new SubjectMentor()
+                    {
+                        SubjectId = subjectId,
+                        MentorId = mentor.Id
+                    };
+                    _appDbContext.Add(subjectMentor);
+                }
+
+
+
+                _appDbContext.SaveChanges();
+                await _userManager.AddToRoleAsync(user, ConstUserRoles.MENTOR);
+                _appDbContext.SaveChanges();
+
+              
+                var rolesUser = await _userManager.GetRolesAsync(user);
+                var token = GenerateJwtToken(user, rolesUser.ToList());
+                LoginSuccessModel successModel = new LoginSuccessModel()
+                {
+                    Fullname = user.Fullname,
+                    Roles = rolesUser.ToList(),
+                    Token = token,
+                    UserId = user.Id
+                };
+                result.Data = successModel;
+                result.Success = true;
+            }
+            catch (Exception e)
+            {
+                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+            }
+            return result;
+        }
     }
 }

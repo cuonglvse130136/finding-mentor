@@ -213,12 +213,33 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
-                var mentor = _mapper.Map<MentorAddModel, Mentor>(model);
+                var mentor = new Mentor() {
+                    About = model.About,
+                    Company = model.Company,
+                    IsGraduted = model.IsGraduted,
+                    UserId = model.UserId
+                };
+
+                var newSubjects = _dbContext.Subjects.Where(s => model.SubjectIds.Contains(s.Id)).ToList();
+                var newMajors = _dbContext.Majors.Where(s => model.MajorIds.Contains(s.Id)).ToList();
+
+                foreach (var subject in newSubjects)
+                {
+                    mentor.SubjectMentors.Add(new SubjectMentor() { SubjectId = subject.Id, MentorId = mentor.Id });
+                }
+
+                foreach (var major in newMajors)
+                {
+                    mentor.AvailableMajors.Add(new AvailableMajor() { MajorId = major.Id, MentorId = mentor.Id });
+                }
+
 
                 _dbContext.Add(mentor);
+   
 
                 var user = _dbContext.Users.FirstOrDefault(s => s.Id == model.UserId);
                 user.IsEnabledMentor = true;
+
                 _dbContext.Update(user);
 
                 foreach (var subjectId in model.SubjectIds)
@@ -291,13 +312,16 @@ namespace Services.Core
 
 
                 mentor.About = model.About;
+                mentor.Company = model.Company;
+                mentor.IsGraduted = model.IsGraduted;
+
                 mentor.User.AvatarUrl = model.AvatarUrl;
                 mentor.User.PhoneNumber = model.PhoneNumber;
-                mentor.Company = model.Company;
+                
 
                 mentor.User.Fullname = model.Fullname;
                 mentor.User.Address = model.Address;
-                mentor.IsGraduted = model.IsGraduted;
+    
                 var newSubjects = _dbContext.Subjects.Where(s => model.SubjectIds.Contains(s.Id)).ToList();
                 var newMajors = _dbContext.Majors.Where(s => model.MajorIds.Contains(s.Id)).ToList();
                 mentor.SubjectMentors.Clear();

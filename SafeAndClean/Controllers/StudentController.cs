@@ -33,6 +33,16 @@ namespace SWP391_FindStudentApp.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
+        [HttpGet("User/{userId}")]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
+        public IActionResult Get(string userId)
+        {
+            var result = _StudentService.Get(userId);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer", Roles = ConstUserRoles.ALL)]
         public IActionResult Create([FromBody] StudentAddModel model)

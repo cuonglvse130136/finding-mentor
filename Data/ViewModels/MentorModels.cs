@@ -13,8 +13,9 @@ namespace Data.ViewModels
         public string About { get; set; }
         public string Company { get; set; }
         public string AvatarUrl { get; set; }
-        public string MajorId { get; set; }
         public List<string> SubjectIds { get; set; }
+        public string[] MajorIds { get; set; }
+
 
     }
 

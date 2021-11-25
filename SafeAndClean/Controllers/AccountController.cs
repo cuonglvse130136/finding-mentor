@@ -66,5 +66,15 @@ namespace SafeAndClean.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
+        [HttpPost("Register/Mentor")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> Create([FromBody] MentorAddModel model)
+        {
+            var result = await _accountService.RegisterMentor(model);
+
+            if (result.Success) return Ok(result.Data);
+            return BadRequest(result.ErrorMessage);
+        }
+
     }
 }

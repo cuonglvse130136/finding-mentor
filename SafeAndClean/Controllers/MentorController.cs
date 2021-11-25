@@ -73,7 +73,7 @@ namespace SWP391_FindMentorApp.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer" , Roles = ConstUserRoles.ADMIN)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> Create([FromBody] MentorAddModel model)
         {
             var result = await _MentorService.Create(model);
