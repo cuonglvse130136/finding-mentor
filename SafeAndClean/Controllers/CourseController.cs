@@ -52,9 +52,9 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(rs.ErrorMessage);
         }
         [HttpGet("Name/{name}")]
-        public IActionResult Filter(string name)
+        public IActionResult Filter(string name, string majorid, string subjectid)
         {
-            var rs = _courseService.Search(name);
+            var rs = _courseService.Search(name, majorid, subjectid);
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
