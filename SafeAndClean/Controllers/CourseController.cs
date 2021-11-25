@@ -51,10 +51,10 @@ namespace SWP391_FindMentorApp.Controllers
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }
-        [HttpGet("Name/{name}")]
-        public IActionResult Filter(string name, string majorid, string subjectid)
+        [HttpGet("Search")]
+        public IActionResult Filter(string name, string majorId, [FromQuery]string[] subjectIds)
         {
-            var rs = _courseService.Search(name, majorid, subjectid);
+            var rs = _courseService.Search(name, majorId, subjectIds);
             if (rs.Success) return Ok(rs.Data);
             return BadRequest(rs.ErrorMessage);
         }

@@ -19,7 +19,7 @@ namespace Services.Core
         ResultModel Add(CourseAddModels model, string userId);
         ResultModel Update(Guid id, CourseUpdateModels model);
         ResultModel Delete(Guid id);
-        ResultModel Search(string name, string majorid, string subjectid);
+        ResultModel Search(string name, string majorid, string[] subjectid);
         ResultModel RecommendCourse(string userId);
         ResultModel GetCourseOfStudent(string userId);
 
@@ -44,7 +44,7 @@ namespace Services.Core
             try
             {
                 var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).FirstOrDefault();
-                
+
 
                 var courseResult = _mapper.Map<Course, CourseViewModel>(course);
 
@@ -64,22 +64,22 @@ namespace Services.Core
         public ResultModel GetMenteeList(Guid? id)
         {
             var result = new ResultModel();
-           /* try
-            {
-                var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).FirstOrDefault().StudentRegistrations;
+            /* try
+             {
+                 var course = _dbContext.Courses.Where(s => id == null || (s.IsDeleted == false && s.Id == id)).FirstOrDefault().StudentRegistrations;
 
 
-                var courseResult = _mapper.Map<Course, CourseViewModel>(course);
+                 var courseResult = _mapper.Map<Course, CourseViewModel>(course);
 
-                var mentorName = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User.Fullname;
-                courseResult.MentorName = mentorName;
-                result.Data = courseResult;
-                result.Success = true;
-            }
-            catch (Exception e)
-            {
-                result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
-            }*/
+                 var mentorName = _dbContext.Mentors.Where(s => s.Id == course.MentorId).First().User.Fullname;
+                 courseResult.MentorName = mentorName;
+                 result.Data = courseResult;
+                 result.Success = true;
+             }
+             catch (Exception e)
+             {
+                 result.ErrorMessage = e.InnerException != null ? e.InnerException.Message : e.Message;
+             }*/
             return result;
         }
         public ResultModel GetCourseOfMentor(string userId)
@@ -109,10 +109,10 @@ namespace Services.Core
         {
             var result = new ResultModel();
             try
-            { 
+            {
                 var students = _dbContext.Students.Where(s => s.UserId == userId).FirstOrDefault();
 
-               
+
                 var course = _dbContext.Courses.Where(m => students.StudentRegistrations.Select(m => m.CourseId)
                 .Contains(m.Id)).ToList();
 
@@ -131,7 +131,7 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel Add(CourseAddModels model , string userId)
+        public ResultModel Add(CourseAddModels model, string userId)
         {
             var result = new ResultModel();
             try
@@ -152,12 +152,38 @@ namespace Services.Core
             }
             return result;
         }
-        public ResultModel Search(string name , string majorid, string subjectid)
+        public ResultModel Search(string name, string majorid, string[] subjectids)
         {
+
             var result = new ResultModel();
+            List<Course> courses = null;
             try
             {
-                var courses = _dbContext.Courses.Where(x=>(x.Name.Contains(name)) && (string.IsNullOrEmpty(majorid) || x.MajorId == majorid) && (string.IsNullOrEmpty(subjectid) || x.SubjectId == subjectid)).ToList();
+
+                if (string.IsNullOrEmpty(majorid))
+                {
+                    courses = _dbContext.Courses
+                    .Where(x => (string.IsNullOrEmpty(name) || x.Name.Contains(name))).ToList();
+                }
+                else
+                {
+                    var major = _dbContext.Majors.Find(majorid);
+                    
+                    if (major != null)
+                    {
+                        var subjectInmMjor = major.SubjectMajors.Select(sm=> sm.Subject);
+
+                        courses = _dbContext.Courses.Include(c=>c.Subject)
+                                 .Where(x => (string.IsNullOrEmpty(name) || x.Name.Contains(name)) 
+                                      && (string.IsNullOrEmpty(majorid) || subjectInmMjor.Contains(x.Subject))
+                                      && (subjectids == null || subjectids.Length == 0 || subjectids.Contains(x.SubjectId)))
+                                .ToList();
+                    }
+
+                }
+
+
+
 
                 result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
                 result.Success = true;
@@ -274,7 +300,7 @@ namespace Services.Core
                 }
 
                 course.ImageUrl = model.ImageUrl;
-               
+
                 _dbContext.Update(course);
                 _dbContext.SaveChanges();
 

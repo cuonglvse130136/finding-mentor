@@ -62,11 +62,10 @@ namespace SWP391_FindMentorApp.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
-        [HttpGet("Search/{name}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        public IActionResult Search(string name, string majorid, string subjectid)
+        [HttpGet("Search")]
+        public IActionResult Filter(string name, string majorId, [FromQuery] string[] subjectIds)
         {
-            var result = _MentorService.Search(name,majorid,subjectid);
+            var result = _MentorService.Search(name, majorId, subjectIds);
 
             if (result.Success) return Ok(result.Data);
             return BadRequest(result.ErrorMessage);

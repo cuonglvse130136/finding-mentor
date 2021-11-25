@@ -20,7 +20,7 @@ namespace Services.Core
         ResultModel UpdateMentorProfile(string userId, MentorUpdateModel1 model);
         ResultModel Delete(Guid id);
         ResultModel RecommendMentorByMajor(string userId);
-        ResultModel Search(string name);
+        ResultModel Search(string name, string majorid, string[] subjectid);
         ResultModel RecommendMentor();
 
         ResultModel GetMentorInformation(string id);
@@ -86,14 +86,6 @@ namespace Services.Core
 
 
                 MentorDataModel mentor = _mapper.Map<Mentor, MentorDataModel>(mentors);
-                //  MentorDataModel mentor1 = new MentorDataModel()
-                //  {
-                //      About = mentors.About,
-                //      AvatarUrl = mentors.AvatarUrl,
-                //      Company = mentors.Company,
-                //      IsGraduted = mentors.IsGraduted,
-                //      Rating = mentors.Rating
-                //  };
                 mentor.Subjects = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
                 mentor.Majors = _mapper.Map<List<Major>, List<MajorViewModel1>>(majors);
                 data.Mentor = mentor;
@@ -185,21 +177,77 @@ namespace Services.Core
         //    }
         //    return result;
         //}
-        public ResultModel Search(string name, string majorid, string subjectid)
+        public ResultModel Search(string name, string majorid, string[] subjectids)
         {
             var result = new ResultModel();
+            List<User> mentorUsers = null;
+            List<MentorViewModel> models = null;
+            
             try
             {
-                //var mentors = _dbContext.Mentors.Include(m => m.User).Where(x => x.User.Fullname.Contains(name)).ToList();
 
-                //result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+                mentorUsers = _dbContext.Users.Where(m => (string.IsNullOrEmpty(name) || m.Fullname.Contains(name)) && m.IsEnabledMentor == true).ToList();
+
+                if (string.IsNullOrEmpty(majorid))
+                {
+                    models = _mapper.Map<List<User>, List<MentorViewModel>>(mentorUsers);
+                }
+                else
+                {
+                    var major = _dbContext.Majors.Find(majorid);
+                    //Contains(subjectids[0])
+                    if (major != null)
+                    {
+                        List <Mentor> mentors = new List<Mentor>();
+                        if(subjectids == null || subjectids.Length == 0)
+                        {
+                            mentors = _dbContext.Mentors.Include(x => x.SubjectMentors)
+                                                 .Where(m => mentorUsers.Select(s => s.Id).Contains(m.UserId)
+                                                   && m.AvailableMajors.Select(am => am.MajorId).Contains(major.Id) ).ToList();
+                        }else
+                        {
+                            foreach (string subjectId in subjectids)
+                            {
+                                var mentor11 = _dbContext.Mentors.Include(x => x.SubjectMentors)
+                                                     .Where(m => mentorUsers.Select(s => s.Id).Contains(m.UserId)
+                                                       && m.AvailableMajors.Select(am => am.MajorId).Contains(major.Id)
+                                                       && !mentors.Contains(m)
+                                                       && (subjectids == null || subjectids.Length == 0 ||
+                                                       m.SubjectMentors.Select(sm => sm.SubjectId).Contains(subjectId)));
+                                mentors.AddRange(mentor11);
+                            }
+                        }
+                      
+
+                       
+
+                        models = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(s => s.User).ToList());
+                    }
+                    else
+                    {
+                        models = _mapper.Map<List<User>, List<MentorViewModel>>(mentorUsers);
+                    }
+                }
+
+                for (int i = 0; i < models.Count; i++)
+                {
+                    var mentor = mentorUsers.Find( u => u.Id == models[i].Id).Mentor;
+
+                    var subjects = _dbContext.Subjects.Where(s => mentor.SubjectMentors.Select(s => s.SubjectId).Contains(s.Id)).ToList();
+                    var majors = _dbContext.Majors.Where(m => mentor.AvailableMajors.Select(m => m.MajorId).Contains(m.Id)).ToList();
 
 
-                var mentors = _dbContext.Users.Where(m => m.Fullname.Contains(name) && m.IsEnabledMentor == true && (string.IsNullOrEmpty(majorid) || m.MajorId == majorid)).ToList();
+                    models[i].Mentor.Subjects = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
+                    models[i].Mentor.Majors = _mapper.Map<List<Major>, List<MajorViewModel1>>(majors);
+                    
+                }
 
-                var mentor1 = _dbContext.Mentors.Include(x=>x.SubjectMentors).Where(m => mentors.Select(s => s.Id).Contains(m.UserId) && (string.IsNullOrEmpty(subjectid) || m.SubjectMentors.Select(s => s.SubjectId).Contains(subjectid)));
+                result.Data = models;
 
-                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentor1.Select(s=>s.User).ToList());
+                /* var mentor1 = _dbContext.Mentors.Include(x => x.SubjectMentors)
+                     .Where(m => mentors.Select(s => s.Id).Contains(m.UserId) && (string.IsNullOrEmpty(subjectids[0]) || m.SubjectMentors.Select(s => s.SubjectId).Contains(subjectids[0])));*/
+
+                //   result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentor1.Select(s => s.User).ToList());
                 result.Success = true;
             }
             catch (Exception e)
@@ -213,7 +261,8 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
-                var mentor = new Mentor() {
+                var mentor = new Mentor()
+                {
                     About = model.About,
                     Company = model.Company,
                     IsGraduted = model.IsGraduted,
@@ -235,7 +284,7 @@ namespace Services.Core
 
 
                 _dbContext.Add(mentor);
-   
+
 
                 var user = _dbContext.Users.FirstOrDefault(s => s.Id == model.UserId);
                 user.IsEnabledMentor = true;
@@ -317,11 +366,11 @@ namespace Services.Core
 
                 mentor.User.AvatarUrl = model.AvatarUrl;
                 mentor.User.PhoneNumber = model.PhoneNumber;
-                
+
 
                 mentor.User.Fullname = model.Fullname;
                 mentor.User.Address = model.Address;
-    
+
                 var newSubjects = _dbContext.Subjects.Where(s => model.SubjectIds.Contains(s.Id)).ToList();
                 var newMajors = _dbContext.Majors.Where(s => model.MajorIds.Contains(s.Id)).ToList();
                 mentor.SubjectMentors.Clear();
