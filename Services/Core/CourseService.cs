@@ -195,10 +195,14 @@ namespace Services.Core
 
                 }
 
+                var coursesData  = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
 
+                foreach (var c in coursesData)
+                {
+                    c.MentorName = _dbContext.Mentors.Where(m => c.MentorId == m.Id).FirstOrDefault().User.Fullname;
+                }
 
-
-                result.Data = _mapper.Map<List<Course>, List<CourseViewModel>>(courses);
+                result.Data = coursesData;
                 result.Success = true;
             }
             catch (Exception e)
@@ -250,7 +254,6 @@ namespace Services.Core
                 }
 
                 course.Name = model.Name;
-                course.MentorId = model.MentorId;
                 course.Price = model.Price;
                 course.Duration = model.Duration;
                 course.ImageUrl = model.ImageUrl;

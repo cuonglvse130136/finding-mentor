@@ -75,6 +75,7 @@ namespace Services.MappingProfiles
             CreateMap<CourseUpdateModels, Course>()
                 .ReverseMap();
             CreateMap<Course, CourseViewModel>()
+                
                 /*   .ForMember(s => s.MentorId, map => map.MapFrom(m1 => m1.Mentor.UserId))
                    .ForMember(s => s.MentorName, map => map.MapFrom(m1 => m1.Mentor.User.Fullname))*/
                 .ReverseMap();

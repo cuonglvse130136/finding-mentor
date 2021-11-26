@@ -116,8 +116,20 @@ namespace Services.Core
                                                 .Where(s => s.AvailableMajors.Any(am => am.MajorId == users.MajorId))
                                                 .OrderByDescending(s => s.Rating).Take(5).ToList();
 
+                var models = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+                for (int i = 0; i < models.Count; i++)
+                {
+                    var mentor = mentors.Find(u => u.UserId == models[i].Id);
 
-                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+                    var subjects = _dbContext.Subjects.Where(s => mentor.SubjectMentors.Select(s => s.SubjectId).Contains(s.Id)).ToList();
+                    var majors = _dbContext.Majors.Where(m => mentor.AvailableMajors.Select(m => m.MajorId).Contains(m.Id)).ToList();
+
+
+                    models[i].Mentor.Subjects = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
+                    models[i].Mentor.Majors = _mapper.Map<List<Major>, List<MajorViewModel1>>(majors);
+
+                }
+                result.Data = models;
                 result.Success = true;
             }
             catch (Exception e)
@@ -149,7 +161,20 @@ namespace Services.Core
             {
                 var mentors = _dbContext.Mentors.Include(m => m.User).OrderByDescending(s => s.Rating).Take(5).ToList();
 
-                result.Data = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+                var models = _mapper.Map<List<User>, List<MentorViewModel>>(mentors.Select(m => m.User).ToList());
+
+                for (int i = 0; i < models.Count; i++)
+                {
+                    var mentor = mentors.Find(u => u.UserId == models[i].Id);
+
+                    var subjects = _dbContext.Subjects.Where(s => mentor.SubjectMentors.Select(s => s.SubjectId).Contains(s.Id)).ToList();
+                    var majors = _dbContext.Majors.Where(m => mentor.AvailableMajors.Select(m => m.MajorId).Contains(m.Id)).ToList();
+
+                    models[i].Mentor.Subjects = _mapper.Map<List<Subject>, List<SubjectViewModel1>>(subjects);
+                    models[i].Mentor.Majors = _mapper.Map<List<Major>, List<MajorViewModel1>>(majors);
+                }
+
+                result.Data = models;
                 result.Success = true;
             }
             catch (Exception e)
