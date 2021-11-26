@@ -100,6 +100,9 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
+                var am = _dbContext.Mentors.Where(m => m.UserId == userId).FirstOrDefault().AvailableMajors;
+                if (am.Count == 0) return result;
+
                 var mentorId = _dbContext.Mentors.FirstOrDefault(m => m.UserId == userId).Id;
                 var course = _dbContext.Courses.Where(s => s.MentorId == mentorId && s.IsDeleted == false).ToList();
 

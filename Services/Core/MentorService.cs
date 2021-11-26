@@ -143,6 +143,9 @@ namespace Services.Core
             var result = new ResultModel();
             try
             {
+                var am = _dbContext.Mentors.Where(m => m.UserId == userId).FirstOrDefault().AvailableMajors;
+                if (am.Count == 0) return result;
+
                 var major = _dbContext.Mentors.Where(m => m.UserId == userId).FirstOrDefault().AvailableMajors.Select(am => am.Major).ToList();
 
                 result.Data = _mapper.Map<List<Major>, List<MajorViewModel>>(major);
